@@ -10,7 +10,7 @@ public class InformeLogica {
     
     private InformeJpaController InformeDAO = new InformeJpaController();
     
-   public  Informe buscarEmpleado(Informe informe){
+   public  Informe buscarInforme(Informe informe){
     return InformeDAO.findInforme(informe.getIdinforme());
    }
    
