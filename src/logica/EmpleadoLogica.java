@@ -5,9 +5,6 @@
  */
 package logica;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.swing.JOptionPane;
 import modelo.Empleado;
 import persistencia.EmpleadoJpaController;
 import persistencia.exceptions.NonexistentEntityException;
@@ -17,22 +14,19 @@ import persistencia.exceptions.NonexistentEntityException;
  * @author Joan
  */
 public class EmpleadoLogica {
-    
-    
-      
+
     private EmpleadoJpaController EmpleadoDao = new EmpleadoJpaController();
-    
-   public  Empleado buscarEmpleado(Empleado empleado){
-    return EmpleadoDao.findEmpleado(empleado.getCedula());
-   }
-   
-   public void registarEmpleado(Empleado empleado) throws Exception{
-       EmpleadoDao.create(empleado);
-   }
-   
-   public void actualizarEmpleado(Empleado empleado) throws NonexistentEntityException, Exception{
-       EmpleadoDao.edit(empleado);
-   }
-   
-    
+
+    public Empleado buscarEmpleado(Empleado empleado) {
+        return EmpleadoDao.findEmpleado(empleado.getCedula());
+    }
+
+    public void registarEmpleado(Empleado empleado) throws Exception {
+        EmpleadoDao.create(empleado);
+    }
+
+    public void actualizarEmpleado(Empleado empleado) throws NonexistentEntityException, Exception {
+        EmpleadoDao.edit(empleado);
+    }
+
 }
