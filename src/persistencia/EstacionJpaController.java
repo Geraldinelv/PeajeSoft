@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import modelo.Estacion;
 import persistencia.exceptions.IllegalOrphanException;
 import persistencia.exceptions.NonexistentEntityException;
@@ -26,8 +27,8 @@ import persistencia.exceptions.PreexistingEntityException;
  */
 public class EstacionJpaController implements Serializable {
 
-    public EstacionJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
+    public EstacionJpaController() {
+        this.emf = Persistence.createEntityManagerFactory("Peaje1.0PU");
     }
     private EntityManagerFactory emf = null;
 
