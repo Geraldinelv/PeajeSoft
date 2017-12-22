@@ -23,6 +23,7 @@ public class Principal extends javax.swing.JFrame {
      */
     DefaultListModel modeloUsuario = new DefaultListModel();
     DefaultListModel modeloCarril = new DefaultListModel();
+    int modNoc = -1;
 
     public Principal() {
         initComponents();
@@ -81,7 +82,7 @@ public class Principal extends javax.swing.JFrame {
         panelConfig = new javax.swing.JPanel();
         cerrarSesionBtn = new javax.swing.JButton();
         configBtn = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        modoNocturnoBtn = new javax.swing.JButton();
         pnlCentro = new javax.swing.JPanel();
         encabezadoPnl = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
@@ -108,7 +109,7 @@ public class Principal extends javax.swing.JFrame {
         telefonoPerfil = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         jLabel22 = new javax.swing.JLabel();
-        apellidoPerfil1 = new javax.swing.JTextField();
+        cedulaPerfil = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
         detallesPnl = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -136,7 +137,7 @@ public class Principal extends javax.swing.JFrame {
         buscarPnl1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        registrarUserLabel = new javax.swing.JLabel();
         registrarCedula = new javax.swing.JTextField();
         jSeparator9 = new javax.swing.JSeparator();
         jLabel25 = new javax.swing.JLabel();
@@ -162,8 +163,6 @@ public class Principal extends javax.swing.JFrame {
         telRegistrar = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         registrarBtn = new rsbuttom.RSButtonMetro();
-        modificarUserPnl = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         regCarrilPnl = new javax.swing.JPanel();
         actualizarCarrilBtn3 = new rsbuttom.RSButtonMetro();
         cabecerBusCarrilPnl3 = new javax.swing.JPanel();
@@ -186,8 +185,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel56 = new javax.swing.JLabel();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
-        modificarCarrilPnl = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         registrarEstacionPnl = new javax.swing.JPanel();
         buscarCarrilPnl2 = new javax.swing.JPanel();
         nombreCarrilBusqueda3 = new javax.swing.JLabel();
@@ -205,10 +202,17 @@ public class Principal extends javax.swing.JFrame {
         jSeparator29 = new javax.swing.JSeparator();
         jLabel49 = new javax.swing.JLabel();
         actualizarCarrilBtn2 = new rsbuttom.RSButtonMetro();
-        modificarEstacionPnl = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         reportesPnl = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        fechaFin = new com.toedter.calendar.JCalendar();
+        fechaIni = new com.toedter.calendar.JCalendar();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        rSButtonMetro1 = new rsbuttom.RSButtonMetro();
+        rSButtonMetro4 = new rsbuttom.RSButtonMetro();
+        rSButtonMetro5 = new rsbuttom.RSButtonMetro();
+        buscarCarrilPnl4 = new javax.swing.JPanel();
+        nombreCarrilBusqueda7 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
         carrilPnl = new javax.swing.JPanel();
         buscarCarrilPnl = new javax.swing.JPanel();
         busquedaCarrilTextField = new javax.swing.JTextField();
@@ -530,12 +534,17 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(52, 152, 219));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-idea-30.png"))); // NOI18N
-        jButton3.setText("Modo nocturno");
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
+        modoNocturnoBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        modoNocturnoBtn.setForeground(new java.awt.Color(52, 152, 219));
+        modoNocturnoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-idea-30.png"))); // NOI18N
+        modoNocturnoBtn.setText("Modo nocturno");
+        modoNocturnoBtn.setBorderPainted(false);
+        modoNocturnoBtn.setContentAreaFilled(false);
+        modoNocturnoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modoNocturnoBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelSuperiorLayout = new javax.swing.GroupLayout(PanelSuperior);
         PanelSuperior.setLayout(PanelSuperiorLayout);
@@ -543,7 +552,7 @@ public class Principal extends javax.swing.JFrame {
             PanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelSuperiorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3)
+                .addComponent(modoNocturnoBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 795, Short.MAX_VALUE)
                 .addComponent(panelConfig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -552,7 +561,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(PanelSuperiorLayout.createSequentialGroup()
                 .addGroup(PanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelConfig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(modoNocturnoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -580,7 +589,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(encabezadoPnlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(850, Short.MAX_VALUE))
         );
         encabezadoPnlLayout.setVerticalGroup(
             encabezadoPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -645,7 +654,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(resultadosBusqueda);
 
-        resulBusPnl.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 500));
+        resulBusPnl.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 530));
 
         jScrollPane3.setViewportView(resulBusPnl);
 
@@ -715,10 +724,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(73, 171, 213));
         jLabel22.setText("Cedula:");
 
-        apellidoPerfil1.setBackground(new java.awt.Color(245, 245, 245));
-        apellidoPerfil1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        apellidoPerfil1.setForeground(new java.awt.Color(73, 171, 213));
-        apellidoPerfil1.setBorder(null);
+        cedulaPerfil.setBackground(new java.awt.Color(245, 245, 245));
+        cedulaPerfil.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        cedulaPerfil.setForeground(new java.awt.Color(73, 171, 213));
+        cedulaPerfil.setBorder(null);
 
         javax.swing.GroupLayout perfilPnlLayout = new javax.swing.GroupLayout(perfilPnl);
         perfilPnl.setLayout(perfilPnlLayout);
@@ -737,7 +746,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel17)
                     .addComponent(jLabel22)
-                    .addComponent(apellidoPerfil1)
+                    .addComponent(cedulaPerfil)
                     .addComponent(jSeparator8))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -759,7 +768,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel22)
                 .addGap(4, 4, 4)
-                .addComponent(apellidoPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cedulaPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1032,9 +1041,9 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(269, Short.MAX_VALUE))
         );
 
-        jLabel24.setFont(new java.awt.Font("ClementePDai", 0, 24)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(73, 171, 213));
-        jLabel24.setText("Registrar Usuario");
+        registrarUserLabel.setFont(new java.awt.Font("ClementePDai", 0, 24)); // NOI18N
+        registrarUserLabel.setForeground(new java.awt.Color(73, 171, 213));
+        registrarUserLabel.setText("Registrar Usuario");
 
         registrarCedula.setBackground(new java.awt.Color(245, 245, 245));
         registrarCedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1077,6 +1086,11 @@ public class Principal extends javax.swing.JFrame {
         correoRegistrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         correoRegistrar.setForeground(new java.awt.Color(73, 171, 213));
         correoRegistrar.setBorder(null);
+        correoRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                correoRegistrarActionPerformed(evt);
+            }
+        });
 
         jSeparator12.setBackground(new java.awt.Color(73, 171, 213));
 
@@ -1140,7 +1154,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(RegistrarUsuarioPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(dirRegistrar)
                     .addComponent(jSeparator12, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(registrarUserLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(registrarCedula, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.LEADING)
@@ -1183,7 +1197,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(RegistrarUsuarioPnlLayout.createSequentialGroup()
                         .addGroup(RegistrarUsuarioPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(RegistrarUsuarioPnlLayout.createSequentialGroup()
-                                .addComponent(jLabel24)
+                                .addComponent(registrarUserLabel)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel25)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1242,27 +1256,6 @@ public class Principal extends javax.swing.JFrame {
 
         pnlPrincipal.add(RegistrarUsuarioPnl, "card9");
 
-        jLabel3.setText("Modificar");
-
-        javax.swing.GroupLayout modificarUserPnlLayout = new javax.swing.GroupLayout(modificarUserPnl);
-        modificarUserPnl.setLayout(modificarUserPnlLayout);
-        modificarUserPnlLayout.setHorizontalGroup(
-            modificarUserPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modificarUserPnlLayout.createSequentialGroup()
-                .addContainerGap(956, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(248, 248, 248))
-        );
-        modificarUserPnlLayout.setVerticalGroup(
-            modificarUserPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(modificarUserPnlLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel3)
-                .addContainerGap(588, Short.MAX_VALUE))
-        );
-
-        pnlPrincipal.add(modificarUserPnl, "card3");
-
         regCarrilPnl.setBackground(new java.awt.Color(245, 245, 245));
 
         actualizarCarrilBtn3.setBackground(new java.awt.Color(73, 171, 213));
@@ -1270,6 +1263,11 @@ public class Principal extends javax.swing.JFrame {
         actualizarCarrilBtn3.setColorHover(new java.awt.Color(63, 192, 220));
         actualizarCarrilBtn3.setColorNormal(new java.awt.Color(73, 171, 213));
         actualizarCarrilBtn3.setColorPressed(new java.awt.Color(70, 166, 204));
+        actualizarCarrilBtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarCarrilBtn3ActionPerformed(evt);
+            }
+        });
 
         cabecerBusCarrilPnl3.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -1482,31 +1480,6 @@ public class Principal extends javax.swing.JFrame {
 
         pnlPrincipal.add(regCarrilPnl, "card4");
 
-        jLabel5.setText("modificar carril");
-
-        javax.swing.GroupLayout modificarCarrilPnlLayout = new javax.swing.GroupLayout(modificarCarrilPnl);
-        modificarCarrilPnl.setLayout(modificarCarrilPnlLayout);
-        modificarCarrilPnlLayout.setHorizontalGroup(
-            modificarCarrilPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1247, Short.MAX_VALUE)
-            .addGroup(modificarCarrilPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(modificarCarrilPnlLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel5)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        modificarCarrilPnlLayout.setVerticalGroup(
-            modificarCarrilPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
-            .addGroup(modificarCarrilPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(modificarCarrilPnlLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel5)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        pnlPrincipal.add(modificarCarrilPnl, "card5");
-
         registrarEstacionPnl.setBackground(new java.awt.Color(245, 245, 245));
 
         buscarCarrilPnl2.setBackground(new java.awt.Color(73, 171, 213));
@@ -1689,52 +1662,127 @@ public class Principal extends javax.swing.JFrame {
 
         pnlPrincipal.add(registrarEstacionPnl, "card6");
 
-        jLabel7.setText("mod estacion");
+        reportesPnl.setBackground(new java.awt.Color(245, 245, 245));
 
-        javax.swing.GroupLayout modificarEstacionPnlLayout = new javax.swing.GroupLayout(modificarEstacionPnl);
-        modificarEstacionPnl.setLayout(modificarEstacionPnlLayout);
-        modificarEstacionPnlLayout.setHorizontalGroup(
-            modificarEstacionPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1247, Short.MAX_VALUE)
-            .addGroup(modificarEstacionPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(modificarEstacionPnlLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel7)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        jLabel3.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(73, 171, 213));
+        jLabel3.setText("Fecha de inicio:");
+
+        jLabel4.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(73, 171, 213));
+        jLabel4.setText("Fecha de fin:");
+
+        rSButtonMetro1.setBackground(new java.awt.Color(73, 171, 213));
+        rSButtonMetro1.setText("cantidad de vehiculos");
+        rSButtonMetro1.setColorHover(new java.awt.Color(63, 192, 220));
+        rSButtonMetro1.setColorNormal(new java.awt.Color(73, 171, 213));
+        rSButtonMetro1.setColorPressed(new java.awt.Color(73, 171, 213));
+        rSButtonMetro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro1ActionPerformed(evt);
+            }
+        });
+
+        rSButtonMetro4.setBackground(new java.awt.Color(73, 171, 213));
+        rSButtonMetro4.setText("monto de dinero");
+        rSButtonMetro4.setColorHover(new java.awt.Color(63, 192, 220));
+        rSButtonMetro4.setColorNormal(new java.awt.Color(73, 171, 213));
+        rSButtonMetro4.setColorPressed(new java.awt.Color(73, 171, 213));
+        rSButtonMetro4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro4ActionPerformed(evt);
+            }
+        });
+
+        rSButtonMetro5.setBackground(new java.awt.Color(73, 171, 213));
+        rSButtonMetro5.setText("categoria de vehiculos");
+        rSButtonMetro5.setColorHover(new java.awt.Color(63, 192, 220));
+        rSButtonMetro5.setColorNormal(new java.awt.Color(73, 171, 213));
+        rSButtonMetro5.setColorPressed(new java.awt.Color(73, 171, 213));
+        rSButtonMetro5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro5ActionPerformed(evt);
+            }
+        });
+
+        buscarCarrilPnl4.setBackground(new java.awt.Color(73, 171, 213));
+
+        nombreCarrilBusqueda7.setBackground(new java.awt.Color(245, 245, 245));
+        nombreCarrilBusqueda7.setFont(new java.awt.Font("ClementePDai", 0, 24)); // NOI18N
+        nombreCarrilBusqueda7.setForeground(new java.awt.Color(255, 255, 255));
+        nombreCarrilBusqueda7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreCarrilBusqueda7.setText("Reportes");
+
+        jLabel52.setBackground(new java.awt.Color(245, 245, 245));
+        jLabel52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-graph-report-100.png"))); // NOI18N
+
+        javax.swing.GroupLayout buscarCarrilPnl4Layout = new javax.swing.GroupLayout(buscarCarrilPnl4);
+        buscarCarrilPnl4.setLayout(buscarCarrilPnl4Layout);
+        buscarCarrilPnl4Layout.setHorizontalGroup(
+            buscarCarrilPnl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscarCarrilPnl4Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(nombreCarrilBusqueda7, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
+            .addGroup(buscarCarrilPnl4Layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(jLabel52)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        modificarEstacionPnlLayout.setVerticalGroup(
-            modificarEstacionPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
-            .addGroup(modificarEstacionPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(modificarEstacionPnlLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel7)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        buscarCarrilPnl4Layout.setVerticalGroup(
+            buscarCarrilPnl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buscarCarrilPnl4Layout.createSequentialGroup()
+                .addGap(152, 152, 152)
+                .addComponent(nombreCarrilBusqueda7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
+                .addComponent(jLabel52)
+                .addContainerGap(212, Short.MAX_VALUE))
         );
-
-        pnlPrincipal.add(modificarEstacionPnl, "card7");
-
-        jLabel8.setText("reportes");
 
         javax.swing.GroupLayout reportesPnlLayout = new javax.swing.GroupLayout(reportesPnl);
         reportesPnl.setLayout(reportesPnlLayout);
         reportesPnlLayout.setHorizontalGroup(
             reportesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1247, Short.MAX_VALUE)
-            .addGroup(reportesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(reportesPnlLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel8)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportesPnlLayout.createSequentialGroup()
+                .addComponent(buscarCarrilPnl4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(reportesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(reportesPnlLayout.createSequentialGroup()
+                        .addGroup(reportesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fechaIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(108, 108, 108)
+                        .addGroup(reportesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(reportesPnlLayout.createSequentialGroup()
+                        .addComponent(rSButtonMetro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rSButtonMetro4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(rSButtonMetro5, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(68, 68, 68))
         );
         reportesPnlLayout.setVerticalGroup(
             reportesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
-            .addGroup(reportesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(reportesPnlLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel8)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(reportesPnlLayout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addGroup(reportesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(reportesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechaIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(reportesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rSButtonMetro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rSButtonMetro4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rSButtonMetro5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(reportesPnlLayout.createSequentialGroup()
+                .addComponent(buscarCarrilPnl4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
         pnlPrincipal.add(reportesPnl, "card8");
@@ -2204,8 +2252,7 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(encabezadoPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlCentroLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
         pnlCentroLayout.setVerticalGroup(
             pnlCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2271,12 +2318,12 @@ public class Principal extends javax.swing.JFrame {
         }
         //***********************************************************************************************
         principalUsuarioPnl.setVisible(true);
-        modificarUserPnl.setVisible(false);
+        
         RegistrarUsuarioPnl.setVisible(false);
         regCarrilPnl.setVisible(false);
-        modificarCarrilPnl.setVisible(false);
+        
         registrarEstacionPnl.setVisible(false);
-        modificarEstacionPnl.setVisible(false);
+        
         reportesPnl.setVisible(false);
         estacionPnl.setVisible(false);
         carrilPnl.setVisible(false);
@@ -2308,12 +2355,12 @@ public class Principal extends javax.swing.JFrame {
 
         titulo.setText("Carriles");
         principalUsuarioPnl.setVisible(false);
-        modificarUserPnl.setVisible(false);
+        
         RegistrarUsuarioPnl.setVisible(false);
         regCarrilPnl.setVisible(false);
-        modificarCarrilPnl.setVisible(false);
+        
         registrarEstacionPnl.setVisible(false);
-        modificarEstacionPnl.setVisible(false);
+        
         reportesPnl.setVisible(false);
         estacionPnl.setVisible(false);
         carrilPnl.setVisible(true);
@@ -2338,12 +2385,12 @@ public class Principal extends javax.swing.JFrame {
 
         titulo.setText("Estaciones");
         principalUsuarioPnl.setVisible(false);
-        modificarUserPnl.setVisible(false);
+        
         RegistrarUsuarioPnl.setVisible(false);
         regCarrilPnl.setVisible(false);
-        modificarCarrilPnl.setVisible(false);
+        
         registrarEstacionPnl.setVisible(false);
-        modificarEstacionPnl.setVisible(false);
+        
         reportesPnl.setVisible(false);
         estacionPnl.setVisible(true);
         carrilPnl.setVisible(false);
@@ -2353,12 +2400,12 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         titulo.setText("Reportes");
         principalUsuarioPnl.setVisible(false);
-        modificarUserPnl.setVisible(false);
+        
         RegistrarUsuarioPnl.setVisible(false);
         regCarrilPnl.setVisible(false);
-        modificarCarrilPnl.setVisible(false);
+        
         registrarEstacionPnl.setVisible(false);
-        modificarEstacionPnl.setVisible(false);
+        
         reportesPnl.setVisible(true);
         estacionPnl.setVisible(false);
         carrilPnl.setVisible(false);
@@ -2369,12 +2416,11 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         titulo.setText("Registrar usuarios");
         principalUsuarioPnl.setVisible(false);
-        modificarUserPnl.setVisible(false);
         RegistrarUsuarioPnl.setVisible(true);
         regCarrilPnl.setVisible(false);
-        modificarCarrilPnl.setVisible(false);
+        
         registrarEstacionPnl.setVisible(false);
-        modificarEstacionPnl.setVisible(false);
+        
         reportesPnl.setVisible(false);
         estacionPnl.setVisible(false);
         carrilPnl.setVisible(false);
@@ -2389,12 +2435,9 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         titulo.setText("Registrar Estación");
         principalUsuarioPnl.setVisible(false);
-        modificarUserPnl.setVisible(false);
         RegistrarUsuarioPnl.setVisible(false);
         regCarrilPnl.setVisible(false);
-        modificarCarrilPnl.setVisible(false);
         registrarEstacionPnl.setVisible(true);
-        modificarEstacionPnl.setVisible(false);
         reportesPnl.setVisible(false);
         estacionPnl.setVisible(false);
         carrilPnl.setVisible(false);
@@ -2406,12 +2449,12 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         titulo.setText("Registrar Carril");
         principalUsuarioPnl.setVisible(false);
-        modificarUserPnl.setVisible(false);
+        
         RegistrarUsuarioPnl.setVisible(false);
         regCarrilPnl.setVisible(true);
-        modificarCarrilPnl.setVisible(false);
+        
         registrarEstacionPnl.setVisible(false);
-        modificarEstacionPnl.setVisible(false);
+        
         reportesPnl.setVisible(false);
         estacionPnl.setVisible(false);
         carrilPnl.setVisible(false);
@@ -2504,6 +2547,265 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_busquedaCarrilTextFieldKeyTyped
 
+    private void modoNocturnoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoNocturnoBtnActionPerformed
+        // TODO add your handling code here:
+        modNoc = modNoc*-1;
+        Color negroMelo = new Color(51,51,51);
+        Color grisMasClaro = new Color(122,122, 122);
+        Color grisClarito = new Color(245,245,245);
+        Color grisClaro = new Color(102,102,102);
+        Color azulMelo = new Color(73, 171, 213);//azul principal
+        Color azulMelo2 = new Color(63, 192, 220);
+        if(modNoc == 1){
+            //modo dia
+            PanelSuperior.setBackground(grisClarito);
+            encabezadoPnl.setBackground(Color.WHITE);
+            pnlMenu.setBackground(azulMelo);
+            cabeceraMenu.setBackground(azulMelo);
+            principalUsuarioPnl.setBackground(grisClarito);
+            pnlCentro.setBackground(Color.WHITE);
+            resultadosBusqueda.setBackground(azulMelo);
+            buscarPnl.setBackground(azulMelo);
+            busquedaTextField.setBackground(azulMelo);
+            UsuarioBtn.setColorHover(azulMelo2);
+            UsuarioBtn.setColorNormal(azulMelo);
+            UsuarioBtn.setColorPressed(azulMelo);
+            regUsuBtn.setColorHover(azulMelo);
+            regUsuBtn.setColorNormal(azulMelo2);
+            regUsuBtn.setColorPressed(azulMelo);
+            Carriles.setColorHover(azulMelo2);
+            Carriles.setColorNormal(azulMelo);
+            Carriles.setColorPressed(azulMelo);
+            RegisCarBtn.setColorHover(azulMelo);
+            RegisCarBtn.setColorNormal(azulMelo2);
+            RegisCarBtn.setColorPressed(azulMelo);
+            estaciones.setColorHover(azulMelo2);
+            estaciones.setColorNormal(azulMelo);
+            estaciones.setColorPressed(azulMelo);
+            RegEstBtn.setColorHover(azulMelo);
+            RegEstBtn.setColorNormal(azulMelo2);
+            RegEstBtn.setColorPressed(azulMelo);
+            reportes.setColorHover(azulMelo2);
+            reportes.setColorNormal(azulMelo);
+            reportes.setColorPressed(azulMelo);
+            panelConfig.setBackground(grisClarito);
+            resulBusPnl.setBackground(azulMelo);//************
+            titulo.setForeground(azulMelo);            
+            modoNocturnoBtn.setForeground(azulMelo);
+            cerrarSesionBtn.setForeground(azulMelo);
+            configBtn.setForeground(azulMelo);
+            resultadosBusqueda.setSelectionBackground(azulMelo2);
+            cabecerBusPnl.setBackground(grisClarito);
+            perfilPnl.setBackground(grisClarito);
+            nombrePerfil.setBackground(grisClarito);
+            apellidoPerfil.setBackground(grisClarito);
+            cedulaPerfil.setBackground(grisClarito);
+            telefonoPerfil.setBackground(grisClarito);
+            buscarPnl1.setBackground(azulMelo);
+            RegistrarUsuarioPnl.setBackground(grisClarito);
+            registrarNombre.setBackground(grisClarito);
+            registrarCedula.setBackground(grisClarito);
+            apellidoRegistrar.setBackground(grisClarito);
+            correoRegistrar.setBackground(grisClarito);
+            contraseñaRegistrar.setBackground(grisClarito);
+            cargoRegistrar.setBackground(grisClarito);
+            dirRegistrar.setBackground(grisClarito);
+            telRegistrar.setBackground(grisClarito);
+            registrarUserLabel.setForeground(azulMelo);
+            jLabel25.setForeground(azulMelo);
+            jLabel26.setForeground(azulMelo);
+            jLabel27.setForeground(azulMelo);
+            jLabel28.setForeground(azulMelo);
+            jLabel29.setForeground(azulMelo);
+            jLabel30.setForeground(azulMelo);
+            jLabel31.setForeground(azulMelo);
+            jLabel32.setForeground(azulMelo);
+            buscarCarrilPnl.setBackground(azulMelo);
+            busquedaCarrilTextField.setBackground(azulMelo);
+            resulBusPnl1.setBackground(azulMelo);
+            resultadosBusquedaCarril.setBackground(azulMelo);
+            resultadosBusquedaCarril.setSelectionBackground(azulMelo2);
+            carrilPnl.setBackground(grisClarito);
+            cabecerBusCarrilPnl.setBackground(grisClarito);
+            carrilDatosPnl.setBackground(grisClarito);
+            IDCarril.setBackground(grisClarito);
+            nombreCarril.setBackground(grisClarito);
+            sentidoCarril.setBackground(grisClarito);
+            IDCarril.setForeground(azulMelo); 
+            nombreCarril.setForeground(azulMelo); 
+            sentidoCarril.setForeground(azulMelo); 
+            jLabel37.setForeground(azulMelo);
+            jLabel38.setForeground(azulMelo);
+            jLabel39.setForeground(azulMelo);
+            jLabel40.setForeground(azulMelo); 
+            nombreCarrilBusqueda.setForeground(azulMelo); 
+            habilitarCarrilRadio.setForeground(Color.black);
+            deshabilitarCarrilRadio.setForeground(Color.black);
+            buscarCarrilPnl1.setBackground(azulMelo);
+            buscarCarrilPnl1.setBackground(azulMelo);
+            estacionPnl.setBackground(grisClarito);
+            cabecerBusCarrilPnl1.setBackground(grisClarito);
+            carrilDatosPnl1.setBackground(grisClarito);
+            nombreCarrilBusqueda1.setForeground(azulMelo);
+            jLabel42.setForeground(azulMelo);
+            jLabel43.setForeground(azulMelo);
+            jLabel44.setForeground(azulMelo);
+            nombreCarril1.setBackground(grisClarito);
+            sentidoCarril1.setBackground(grisClarito);
+            nombreCarril1.setForeground(azulMelo);
+            sentidoCarril1.setForeground(azulMelo);
+            buscarCarrilPnl2.setBackground(azulMelo);
+            registrarEstacionPnl.setBackground(grisClarito);
+            carrilDatosPnl2.setBackground(grisClarito);
+            cabecerBusCarrilPnl2.setBackground(grisClarito);
+            nombreCarrilBusqueda4.setForeground(azulMelo);
+            jLabel45.setForeground(azulMelo);
+            jLabel47.setForeground(azulMelo);
+            jLabel48.setForeground(azulMelo);
+            nombreCarril2.setBackground(grisClarito);
+            sentidoCarril2.setBackground(grisClarito);
+            nombreCarril2.setForeground(azulMelo);
+            sentidoCarril2.setForeground(azulMelo);
+            buscarCarrilPnl4.setBackground(azulMelo);
+            jLabel3.setForeground(azulMelo);
+            jLabel4.setForeground(azulMelo);
+            reportesPnl.setBackground(grisClarito);
+        }else{
+            //modo noche
+            panelConfig.setBackground(grisClaro);
+            PanelSuperior.setBackground(grisClaro);
+            encabezadoPnl.setBackground(grisMasClaro);
+            pnlMenu.setBackground(negroMelo);
+            cabeceraMenu.setBackground(negroMelo);
+            principalUsuarioPnl.setBackground(grisClaro);
+            pnlCentro.setBackground(grisMasClaro);
+            resultadosBusqueda.setBackground(negroMelo);
+            buscarPnl.setBackground(negroMelo);
+            busquedaTextField.setBackground(negroMelo);
+            UsuarioBtn.setColorHover(grisMasClaro);
+            UsuarioBtn.setColorNormal(negroMelo);
+            UsuarioBtn.setColorPressed(negroMelo);
+            regUsuBtn.setColorHover(negroMelo);
+            regUsuBtn.setColorNormal(grisMasClaro);
+            regUsuBtn.setColorPressed(negroMelo);
+            Carriles.setColorHover(grisMasClaro);
+            Carriles.setColorNormal(negroMelo);
+            Carriles.setColorPressed(negroMelo);
+            RegisCarBtn.setColorHover(negroMelo);
+            RegisCarBtn.setColorNormal(grisMasClaro);
+            RegisCarBtn.setColorPressed(negroMelo);
+            estaciones.setColorHover(grisMasClaro);
+            estaciones.setColorNormal(negroMelo);
+            estaciones.setColorPressed(negroMelo);
+            RegEstBtn.setColorHover(negroMelo);
+            RegEstBtn.setColorNormal(grisMasClaro);
+            RegEstBtn.setColorPressed(negroMelo);
+            reportes.setColorHover(grisMasClaro);
+            reportes.setColorNormal(negroMelo);
+            reportes.setColorPressed(negroMelo);
+            resulBusPnl.setBackground(negroMelo);//************
+            titulo.setForeground(Color.WHITE);
+            modoNocturnoBtn.setForeground(Color.WHITE);
+            cerrarSesionBtn.setForeground(Color.WHITE);
+            configBtn.setForeground(Color.WHITE);
+            resultadosBusqueda.setSelectionBackground(grisMasClaro);
+            cabecerBusPnl.setBackground(grisClaro);
+            perfilPnl.setBackground(grisClaro);
+            nombrePerfil.setBackground(grisClaro);
+            apellidoPerfil.setBackground(grisClaro);
+            cedulaPerfil.setBackground(grisClaro);
+            telefonoPerfil.setBackground(grisClaro);
+            buscarPnl1.setBackground(negroMelo);
+            RegistrarUsuarioPnl.setBackground(grisClaro);
+            registrarNombre.setBackground(grisClaro);
+            registrarCedula.setBackground(grisClaro);
+            apellidoRegistrar.setBackground(grisClaro);
+            correoRegistrar.setBackground(grisClaro);
+            contraseñaRegistrar.setBackground(grisClaro);
+            cargoRegistrar.setBackground(grisClaro);
+            dirRegistrar.setBackground(grisClaro);
+            telRegistrar.setBackground(grisClaro);
+            registrarUserLabel.setForeground(Color.WHITE);
+            jLabel25.setForeground(Color.WHITE);
+            jLabel26.setForeground(Color.WHITE);
+            jLabel27.setForeground(Color.WHITE);
+            jLabel28.setForeground(Color.WHITE);
+            jLabel29.setForeground(Color.WHITE);
+            jLabel30.setForeground(Color.WHITE);
+            jLabel31.setForeground(Color.WHITE);
+            jLabel32.setForeground(Color.WHITE); 
+            buscarCarrilPnl.setBackground(negroMelo);
+            busquedaCarrilTextField.setBackground(negroMelo);
+            resulBusPnl1.setBackground(negroMelo);
+            resultadosBusquedaCarril.setBackground(negroMelo);
+            resultadosBusquedaCarril.setSelectionBackground(grisClaro);
+            carrilPnl.setBackground(grisClaro);
+            cabecerBusCarrilPnl.setBackground(grisClaro);
+            carrilDatosPnl.setBackground(grisClaro);
+            IDCarril.setBackground(grisClaro);
+            nombreCarril.setBackground(grisClaro);
+            sentidoCarril.setBackground(grisClaro);
+            IDCarril.setForeground(Color.WHITE);
+            nombreCarril.setForeground(Color.WHITE);
+            sentidoCarril.setForeground(Color.WHITE);
+            jLabel37.setForeground(Color.WHITE);
+            jLabel38.setForeground(Color.WHITE);
+            jLabel39.setForeground(Color.WHITE);
+            jLabel40.setForeground(Color.WHITE); 
+            nombreCarrilBusqueda.setForeground(Color.WHITE); 
+            habilitarCarrilRadio.setForeground(Color.WHITE);
+            deshabilitarCarrilRadio.setForeground(Color.WHITE);
+            buscarCarrilPnl1.setBackground(negroMelo);
+            estacionPnl.setBackground(grisClaro);
+            cabecerBusCarrilPnl1.setBackground(grisClaro);
+            carrilDatosPnl1.setBackground(grisClaro);
+            nombreCarrilBusqueda1.setForeground(Color.WHITE);
+            jLabel42.setForeground(Color.WHITE);
+            jLabel43.setForeground(Color.WHITE);
+            jLabel44.setForeground(Color.WHITE);
+            nombreCarril1.setBackground(grisClaro);
+            sentidoCarril1.setBackground(grisClaro);
+            nombreCarril1.setForeground(Color.WHITE);
+            sentidoCarril1.setForeground(Color.WHITE);
+            buscarCarrilPnl2.setBackground(negroMelo);
+            registrarEstacionPnl.setBackground(grisClaro);
+            carrilDatosPnl2.setBackground(grisClaro);
+            cabecerBusCarrilPnl2.setBackground(grisClaro);
+            nombreCarrilBusqueda4.setForeground(Color.WHITE);
+            jLabel45.setForeground(Color.WHITE);
+            jLabel47.setForeground(Color.WHITE);
+            jLabel48.setForeground(Color.WHITE);
+            nombreCarril2.setBackground(grisClaro);
+            sentidoCarril2.setBackground(grisClaro);
+            nombreCarril2.setForeground(Color.WHITE);
+            sentidoCarril2.setForeground(Color.WHITE);
+            buscarCarrilPnl4.setBackground(negroMelo);
+            jLabel3.setForeground(Color.WHITE);
+            jLabel4.setForeground(Color.WHITE);
+            reportesPnl.setBackground(grisClaro);
+        }
+    }//GEN-LAST:event_modoNocturnoBtnActionPerformed
+
+    private void actualizarCarrilBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarCarrilBtn3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actualizarCarrilBtn3ActionPerformed
+
+    private void correoRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoRegistrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_correoRegistrarActionPerformed
+
+    private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rSButtonMetro1ActionPerformed
+
+    private void rSButtonMetro4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rSButtonMetro4ActionPerformed
+
+    private void rSButtonMetro5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rSButtonMetro5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2553,7 +2855,6 @@ public class Principal extends javax.swing.JFrame {
     private rsbuttom.RSButtonMetro actualizarCarrilBtn3;
     private rsbuttom.RSButtonMetro actualizarEmpBtn;
     private javax.swing.JTextField apellidoPerfil;
-    private javax.swing.JTextField apellidoPerfil1;
     private javax.swing.JTextField apellidoRegistrar;
     private javax.swing.JButton buscarBtn;
     private javax.swing.JButton buscarCarrilBtn;
@@ -2561,6 +2862,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel buscarCarrilPnl1;
     private javax.swing.JPanel buscarCarrilPnl2;
     private javax.swing.JPanel buscarCarrilPnl3;
+    private javax.swing.JPanel buscarCarrilPnl4;
     private javax.swing.JPanel buscarPnl;
     private javax.swing.JPanel buscarPnl1;
     private javax.swing.JTextField busquedaCarrilTextField;
@@ -2580,6 +2882,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel carrilDatosPnl2;
     private javax.swing.JPanel carrilDatosPnl3;
     private javax.swing.JPanel carrilPnl;
+    private javax.swing.JTextField cedulaPerfil;
     private javax.swing.JButton cerrarSesionBtn;
     private javax.swing.JRadioButton conTrabajoRadio;
     private javax.swing.JButton configBtn;
@@ -2595,8 +2898,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel encabezadoPnl;
     private javax.swing.JPanel estacionPnl;
     private rsbuttom.RSButtonMetro estaciones;
+    private com.toedter.calendar.JCalendar fechaFin;
+    private com.toedter.calendar.JCalendar fechaIni;
     private javax.swing.JRadioButton habilitarCarrilRadio;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2613,7 +2917,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -2630,6 +2933,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -2640,15 +2944,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
@@ -2686,9 +2988,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JPanel modificarCarrilPnl;
-    private javax.swing.JPanel modificarEstacionPnl;
-    private javax.swing.JPanel modificarUserPnl;
+    private javax.swing.JButton modoNocturnoBtn;
     private javax.swing.JTextField nombreCarril;
     private javax.swing.JTextField nombreCarril1;
     private javax.swing.JTextField nombreCarril2;
@@ -2701,6 +3001,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel nombreCarrilBusqueda4;
     private javax.swing.JLabel nombreCarrilBusqueda5;
     private javax.swing.JLabel nombreCarrilBusqueda6;
+    private javax.swing.JLabel nombreCarrilBusqueda7;
     private javax.swing.JLabel nombreEmpleadoBusqueda;
     private javax.swing.JTextField nombrePerfil;
     private javax.swing.JPanel opcionesCarril;
@@ -2713,12 +3014,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JPanel principalUsuarioPnl;
+    private rsbuttom.RSButtonMetro rSButtonMetro1;
+    private rsbuttom.RSButtonMetro rSButtonMetro4;
+    private rsbuttom.RSButtonMetro rSButtonMetro5;
     private javax.swing.JPanel regCarrilPnl;
     private rsbuttom.RSButtonMetro regUsuBtn;
     private rsbuttom.RSButtonMetro registrarBtn;
     private javax.swing.JTextField registrarCedula;
     private javax.swing.JPanel registrarEstacionPnl;
     private javax.swing.JTextField registrarNombre;
+    private javax.swing.JLabel registrarUserLabel;
     private rsbuttom.RSButtonMetro reportes;
     private javax.swing.JPanel reportesPnl;
     private javax.swing.JPanel resulBusPnl;

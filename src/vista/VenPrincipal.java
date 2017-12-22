@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +17,8 @@ public class VenPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VenPrincipal
      */
+    int modNoc = -1;
+
     public VenPrincipal() {
         initComponents();
     }
@@ -32,8 +35,9 @@ public class VenPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        modoNocturnoBtn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        rSButtonMetro1 = new rsbuttom.RSButtonMetro();
+        botonsito = new rsbuttom.RSButtonMetro();
         jLabel47 = new javax.swing.JLabel();
         nombreCarril2 = new javax.swing.JTextField();
         jSeparator28 = new javax.swing.JSeparator();
@@ -81,12 +85,26 @@ public class VenPrincipal extends javax.swing.JFrame {
             }
         });
 
+        modoNocturnoBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        modoNocturnoBtn.setForeground(new java.awt.Color(52, 152, 219));
+        modoNocturnoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-idea-30.png"))); // NOI18N
+        modoNocturnoBtn.setText("Modo nocturno");
+        modoNocturnoBtn.setBorderPainted(false);
+        modoNocturnoBtn.setContentAreaFilled(false);
+        modoNocturnoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modoNocturnoBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(modoNocturnoBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -96,26 +114,27 @@ public class VenPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton1)
                 .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(modoNocturnoBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(73, 171, 213));
 
-        rSButtonMetro1.setText("Facturar");
-        rSButtonMetro1.setColorHover(new java.awt.Color(73, 171, 213));
-        rSButtonMetro1.setColorNormal(new java.awt.Color(63, 192, 220));
-        rSButtonMetro1.setColorPressed(new java.awt.Color(73, 171, 213));
+        botonsito.setText("Facturar");
+        botonsito.setColorHover(new java.awt.Color(73, 171, 213));
+        botonsito.setColorNormal(new java.awt.Color(63, 192, 220));
+        botonsito.setColorPressed(new java.awt.Color(73, 171, 213));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rSButtonMetro1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+            .addComponent(botonsito, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(rSButtonMetro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonsito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -397,7 +416,7 @@ public class VenPrincipal extends javax.swing.JFrame {
         int pregunta = JOptionPane.showConfirmDialog(null, "¿Realmente desea reportar este vehiculo?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (pregunta == 0) {
             JOptionPane.showMessageDialog(this, "REportar");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No REportar");
         }
     }//GEN-LAST:event_rSButtonMetro3ActionPerformed
@@ -408,6 +427,70 @@ public class VenPrincipal extends javax.swing.JFrame {
         l.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void modoNocturnoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoNocturnoBtnActionPerformed
+        // TODO add your handling code here:
+        modNoc = modNoc * -1;
+        Color negroMelo = new Color(51, 51, 51);
+        Color grisMasClaro = new Color(122, 122, 122);
+        Color grisClarito = new Color(245, 245, 245);
+        Color grisClaro = new Color(102, 102, 102);
+        Color azulMelo = new Color(73, 171, 213);//azul principal
+        Color azulMelo2 = new Color(63, 192, 220);
+        if (modNoc == 1) {
+            //modo dia
+            jPanel4.setBackground(azulMelo);
+            jPanel1.setBackground(Color.white);
+            botonsito.setColorHover(azulMelo2);
+            botonsito.setColorNormal(azulMelo);
+            botonsito.setColorPressed(azulMelo);
+            jPanel1.setBackground(grisClarito);
+            nombreCarril2.setBackground(Color.white);
+                    nombreCarril3.setBackground(Color.white);
+            nombreCarril4.setBackground(Color.white);
+                    nombreCarril5.setBackground(Color.white);
+            nombreCarril6.setBackground(Color.white);
+                    nombreCarril7.setBackground(Color.white);
+            nombreCarril8.setBackground(Color.white);
+                    nombreCarril9.setBackground(Color.white);
+            nombreCarril10.setBackground(Color.white);
+            nombreCarril2.setForeground(Color.white);
+                    nombreCarril3.setForeground(azulMelo);
+            nombreCarril4.setForeground(azulMelo);
+                    nombreCarril5.setForeground(azulMelo);
+            nombreCarril6.setForeground(azulMelo);
+                    nombreCarril7.setForeground(azulMelo);
+            nombreCarril8.setForeground(azulMelo);
+                    nombreCarril9.setForeground(azulMelo);
+            nombreCarril10.setForeground(azulMelo);
+        } else {
+            //modo noche
+            jPanel4.setBackground(negroMelo);
+            botonsito.setColorHover(grisMasClaro);
+            botonsito.setColorNormal(negroMelo);
+            botonsito.setColorPressed(negroMelo);
+            jPanel1.setBackground(grisMasClaro);
+            jPanel1.setBackground(grisClaro);
+            nombreCarril2.setBackground(grisClaro);
+                    nombreCarril3.setBackground(grisClaro);
+            nombreCarril4.setBackground(grisClaro);
+                    nombreCarril5.setBackground(grisClaro);
+            nombreCarril6.setBackground(grisClaro);
+                    nombreCarril7.setBackground(grisClaro);
+            nombreCarril8.setBackground(grisClaro);
+                    nombreCarril9.setBackground(grisClaro);
+            nombreCarril10.setBackground(grisClaro);
+            nombreCarril2.setForeground(grisClaro);
+                    nombreCarril3.setForeground(Color.white);
+            nombreCarril4.setForeground(Color.white);
+                    nombreCarril5.setForeground(Color.white);
+            nombreCarril6.setForeground(Color.white);
+                    nombreCarril7.setForeground(Color.white);
+            nombreCarril8.setForeground(Color.white);
+                    nombreCarril9.setForeground(Color.white);
+            nombreCarril10.setForeground(Color.white);
+        }
+    }//GEN-LAST:event_modoNocturnoBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -445,6 +528,7 @@ public class VenPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rsbuttom.RSButtonMetro botonsito;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
@@ -467,6 +551,7 @@ public class VenPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator34;
     private javax.swing.JSeparator jSeparator35;
     private javax.swing.JSeparator jSeparator36;
+    private javax.swing.JButton modoNocturnoBtn;
     private javax.swing.JTextField nombreCarril10;
     private javax.swing.JTextField nombreCarril2;
     private javax.swing.JTextField nombreCarril3;
@@ -477,7 +562,6 @@ public class VenPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField nombreCarril8;
     private javax.swing.JTextField nombreCarril9;
     private javax.swing.JLabel nombreCarrilBusqueda4;
-    private rsbuttom.RSButtonMetro rSButtonMetro1;
     private rsbuttom.RSButtonMetro rSButtonMetro2;
     private rsbuttom.RSButtonMetro rSButtonMetro3;
     // End of variables declaration//GEN-END:variables
