@@ -35,32 +35,32 @@ public class VenPrincipal extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         rSButtonMetro1 = new rsbuttom.RSButtonMetro();
         jLabel47 = new javax.swing.JLabel();
-        nombreCarril2 = new javax.swing.JTextField();
+        idFactura = new javax.swing.JTextField();
         jSeparator28 = new javax.swing.JSeparator();
         nombreCarrilBusqueda4 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
-        nombreCarril3 = new javax.swing.JTextField();
+        inPlaca = new javax.swing.JTextField();
         jSeparator29 = new javax.swing.JSeparator();
         jLabel49 = new javax.swing.JLabel();
-        nombreCarril4 = new javax.swing.JTextField();
+        inCategoria = new javax.swing.JTextField();
         jSeparator30 = new javax.swing.JSeparator();
         jLabel50 = new javax.swing.JLabel();
-        nombreCarril5 = new javax.swing.JTextField();
+        inIdCarril = new javax.swing.JTextField();
         jSeparator31 = new javax.swing.JSeparator();
         jSeparator32 = new javax.swing.JSeparator();
-        nombreCarril6 = new javax.swing.JTextField();
+        inCedula = new javax.swing.JTextField();
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
-        nombreCarril7 = new javax.swing.JTextField();
+        inFecha = new javax.swing.JTextField();
         jSeparator33 = new javax.swing.JSeparator();
         jLabel53 = new javax.swing.JLabel();
-        nombreCarril8 = new javax.swing.JTextField();
+        inHora = new javax.swing.JTextField();
         jSeparator34 = new javax.swing.JSeparator();
         jLabel54 = new javax.swing.JLabel();
-        nombreCarril9 = new javax.swing.JTextField();
+        inPago = new javax.swing.JTextField();
         jSeparator35 = new javax.swing.JSeparator();
         jLabel55 = new javax.swing.JLabel();
-        nombreCarril10 = new javax.swing.JTextField();
+        inCambio = new javax.swing.JTextField();
         jSeparator36 = new javax.swing.JSeparator();
         rSButtonMetro2 = new rsbuttom.RSButtonMetro();
         rSButtonMetro3 = new rsbuttom.RSButtonMetro();
@@ -123,10 +123,20 @@ public class VenPrincipal extends javax.swing.JFrame {
         jLabel47.setForeground(new java.awt.Color(73, 171, 213));
         jLabel47.setText("ID factura");
 
-        nombreCarril2.setEditable(false);
-        nombreCarril2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril2.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril2.setBorder(null);
+        idFactura.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        idFactura.setForeground(new java.awt.Color(73, 171, 213));
+        idFactura.setBorder(null);
+        idFactura.setOpaque(false);
+        idFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idFacturaActionPerformed(evt);
+            }
+        });
+        idFactura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                idFacturaKeyTyped(evt);
+            }
+        });
 
         nombreCarrilBusqueda4.setBackground(new java.awt.Color(245, 245, 245));
         nombreCarrilBusqueda4.setFont(new java.awt.Font("ClementePDai", 0, 24)); // NOI18N
@@ -138,37 +148,37 @@ public class VenPrincipal extends javax.swing.JFrame {
         jLabel48.setForeground(new java.awt.Color(73, 171, 213));
         jLabel48.setText("Placa");
 
-        nombreCarril3.setEditable(false);
-        nombreCarril3.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril3.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril3.setBorder(null);
+        inPlaca.setEditable(false);
+        inPlaca.setBackground(new java.awt.Color(255, 255, 255));
+        inPlaca.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inPlaca.setForeground(new java.awt.Color(73, 171, 213));
+        inPlaca.setBorder(null);
 
         jLabel49.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(73, 171, 213));
         jLabel49.setText("Categoria");
 
-        nombreCarril4.setEditable(false);
-        nombreCarril4.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril4.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril4.setBorder(null);
+        inCategoria.setEditable(false);
+        inCategoria.setBackground(new java.awt.Color(255, 255, 255));
+        inCategoria.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inCategoria.setForeground(new java.awt.Color(73, 171, 213));
+        inCategoria.setBorder(null);
 
         jLabel50.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(73, 171, 213));
         jLabel50.setText("ID carril");
 
-        nombreCarril5.setEditable(false);
-        nombreCarril5.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril5.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril5.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril5.setBorder(null);
+        inIdCarril.setEditable(false);
+        inIdCarril.setBackground(new java.awt.Color(255, 255, 255));
+        inIdCarril.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inIdCarril.setForeground(new java.awt.Color(73, 171, 213));
+        inIdCarril.setBorder(null);
 
-        nombreCarril6.setEditable(false);
-        nombreCarril6.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril6.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril6.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril6.setBorder(null);
+        inCedula.setEditable(false);
+        inCedula.setBackground(new java.awt.Color(255, 255, 255));
+        inCedula.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inCedula.setForeground(new java.awt.Color(73, 171, 213));
+        inCedula.setBorder(null);
 
         jLabel51.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(73, 171, 213));
@@ -178,41 +188,51 @@ public class VenPrincipal extends javax.swing.JFrame {
         jLabel52.setForeground(new java.awt.Color(73, 171, 213));
         jLabel52.setText("fecha");
 
-        nombreCarril7.setEditable(false);
-        nombreCarril7.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril7.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril7.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril7.setBorder(null);
+        inFecha.setEditable(false);
+        inFecha.setBackground(new java.awt.Color(255, 255, 255));
+        inFecha.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inFecha.setForeground(new java.awt.Color(73, 171, 213));
+        inFecha.setBorder(null);
 
         jLabel53.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel53.setForeground(new java.awt.Color(73, 171, 213));
         jLabel53.setText("Hora");
 
-        nombreCarril8.setEditable(false);
-        nombreCarril8.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril8.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril8.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril8.setBorder(null);
+        inHora.setEditable(false);
+        inHora.setBackground(new java.awt.Color(255, 255, 255));
+        inHora.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inHora.setForeground(new java.awt.Color(73, 171, 213));
+        inHora.setBorder(null);
 
         jLabel54.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(73, 171, 213));
         jLabel54.setText("Pago");
 
-        nombreCarril9.setEditable(false);
-        nombreCarril9.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril9.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril9.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril9.setBorder(null);
+        inPago.setEditable(false);
+        inPago.setBackground(new java.awt.Color(255, 255, 255));
+        inPago.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inPago.setForeground(new java.awt.Color(73, 171, 213));
+        inPago.setBorder(null);
+        inPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inPagoActionPerformed(evt);
+            }
+        });
+        inPago.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inPagoKeyTyped(evt);
+            }
+        });
 
         jLabel55.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel55.setForeground(new java.awt.Color(73, 171, 213));
         jLabel55.setText("Cambio");
 
-        nombreCarril10.setEditable(false);
-        nombreCarril10.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril10.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril10.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril10.setBorder(null);
+        inCambio.setEditable(false);
+        inCambio.setBackground(new java.awt.Color(255, 255, 255));
+        inCambio.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inCambio.setForeground(new java.awt.Color(73, 171, 213));
+        inCambio.setBorder(null);
 
         rSButtonMetro2.setText("Facturar");
         rSButtonMetro2.setColorHover(new java.awt.Color(73, 171, 213));
@@ -248,47 +268,47 @@ public class VenPrincipal extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel50)
-                                            .addComponent(nombreCarril5)
+                                            .addComponent(inIdCarril)
                                             .addComponent(jSeparator31, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel51)
-                                            .addComponent(nombreCarril6)
+                                            .addComponent(inCedula)
                                             .addComponent(jSeparator32, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel52)
-                                            .addComponent(nombreCarril7)
+                                            .addComponent(inFecha)
                                             .addComponent(jSeparator33, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel47)
-                                            .addComponent(nombreCarril2, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                                            .addComponent(idFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                                             .addComponent(jSeparator28))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel48)
-                                            .addComponent(nombreCarril3)
+                                            .addComponent(inPlaca)
                                             .addComponent(jSeparator29, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel49)
-                                            .addComponent(nombreCarril4)
+                                            .addComponent(inCategoria)
                                             .addComponent(jSeparator30, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel53)
-                                            .addComponent(nombreCarril8)
+                                            .addComponent(inHora)
                                             .addComponent(jSeparator34, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel54)
-                                            .addComponent(nombreCarril9)
+                                            .addComponent(inPago)
                                             .addComponent(jSeparator35, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel55)
-                                            .addComponent(nombreCarril10)
+                                            .addComponent(inCambio)
                                             .addComponent(jSeparator36, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(0, 23, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -310,7 +330,7 @@ public class VenPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel49)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator30, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -320,13 +340,13 @@ public class VenPrincipal extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel47)
                                         .addGap(2, 2, 2)
-                                        .addComponent(nombreCarril2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(idFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jSeparator28, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel48)
                                         .addGap(2, 2, 2)
-                                        .addComponent(nombreCarril3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(inPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jSeparator29, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(68, 68, 68)
@@ -334,19 +354,19 @@ public class VenPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel52)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator33, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel50)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inIdCarril, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator31, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel51)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator32, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(77, 77, 77)
@@ -354,19 +374,19 @@ public class VenPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel55)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator36, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel53)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator34, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel54)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator35, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
@@ -397,7 +417,7 @@ public class VenPrincipal extends javax.swing.JFrame {
         int pregunta = JOptionPane.showConfirmDialog(null, "¿Realmente desea reportar este vehiculo?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (pregunta == 0) {
             JOptionPane.showMessageDialog(this, "REportar");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No REportar");
         }
     }//GEN-LAST:event_rSButtonMetro3ActionPerformed
@@ -408,6 +428,36 @@ public class VenPrincipal extends javax.swing.JFrame {
         l.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void idFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idFacturaActionPerformed
+
+    private void idFacturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idFacturaKeyTyped
+        char c = evt.getKeyChar();
+        if (idFactura.getText().length() >= 21) {
+            evt.consume();
+        }
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_idFacturaKeyTyped
+
+    private void inPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inPagoActionPerformed
+
+    private void inPagoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inPagoKeyTyped
+        char c = evt.getKeyChar();
+        
+        idFactura.getText();
+        if (inPago.getText().length() >= 8) {
+            evt.consume();
+        }
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_inPagoKeyTyped
 
     /**
      * @param args the command line arguments
@@ -445,6 +495,15 @@ public class VenPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField idFactura;
+    private javax.swing.JTextField inCambio;
+    private javax.swing.JTextField inCategoria;
+    private javax.swing.JTextField inCedula;
+    private javax.swing.JTextField inFecha;
+    private javax.swing.JTextField inHora;
+    private javax.swing.JTextField inIdCarril;
+    private javax.swing.JTextField inPago;
+    private javax.swing.JTextField inPlaca;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
@@ -467,15 +526,6 @@ public class VenPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator34;
     private javax.swing.JSeparator jSeparator35;
     private javax.swing.JSeparator jSeparator36;
-    private javax.swing.JTextField nombreCarril10;
-    private javax.swing.JTextField nombreCarril2;
-    private javax.swing.JTextField nombreCarril3;
-    private javax.swing.JTextField nombreCarril4;
-    private javax.swing.JTextField nombreCarril5;
-    private javax.swing.JTextField nombreCarril6;
-    private javax.swing.JTextField nombreCarril7;
-    private javax.swing.JTextField nombreCarril8;
-    private javax.swing.JTextField nombreCarril9;
     private javax.swing.JLabel nombreCarrilBusqueda4;
     private rsbuttom.RSButtonMetro rSButtonMetro1;
     private rsbuttom.RSButtonMetro rSButtonMetro2;

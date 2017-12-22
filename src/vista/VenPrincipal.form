@@ -62,57 +62,57 @@
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel50" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="nombreCarril5" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="inIdCarril" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator31" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel51" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="nombreCarril6" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="inCedula" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator32" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel52" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="nombreCarril7" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="inFecha" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator33" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel47" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="nombreCarril2" alignment="0" pref="209" max="32767" attributes="0"/>
+                                              <Component id="idFactura" alignment="0" pref="209" max="32767" attributes="0"/>
                                               <Component id="jSeparator28" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel48" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="nombreCarril3" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="inPlaca" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator29" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel49" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="nombreCarril4" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="inCategoria" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator30" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel53" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="nombreCarril8" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="inHora" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator34" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel54" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="nombreCarril9" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="inPago" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator35" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel55" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="nombreCarril10" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="inCambio" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator36" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -144,7 +144,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="nombreCarril4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="inCategoria" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jSeparator30" min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
@@ -155,14 +155,14 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          <Component id="nombreCarril2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="idFactura" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jSeparator28" min="-2" pref="10" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          <Component id="nombreCarril3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="inPlaca" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jSeparator29" min="-2" pref="10" max="-2" attributes="0"/>
                                       </Group>
@@ -174,21 +174,21 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel52" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="nombreCarril7" min="-2" max="-2" attributes="0"/>
+                                  <Component id="inFecha" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jSeparator33" min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="nombreCarril5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="inIdCarril" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jSeparator31" min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="nombreCarril6" min="-2" max="-2" attributes="0"/>
+                                  <Component id="inCedula" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jSeparator32" min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
@@ -198,21 +198,21 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="nombreCarril10" min="-2" max="-2" attributes="0"/>
+                                  <Component id="inCambio" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jSeparator36" min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="nombreCarril8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="inHora" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jSeparator34" min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel54" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="nombreCarril9" min="-2" max="-2" attributes="0"/>
+                                  <Component id="inPago" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jSeparator35" min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
@@ -327,9 +327,8 @@
             <Property name="text" type="java.lang.String" value="ID factura"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="nombreCarril2">
+        <Component class="javax.swing.JTextField" name="idFactura">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="0"/>
             </Property>
@@ -339,7 +338,12 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idFacturaActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="idFacturaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator28">
         </Component>
@@ -369,7 +373,7 @@
             <Property name="text" type="java.lang.String" value="Placa"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="nombreCarril3">
+        <Component class="javax.swing.JTextField" name="inPlaca">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -399,7 +403,7 @@
             <Property name="text" type="java.lang.String" value="Categoria"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="nombreCarril4">
+        <Component class="javax.swing.JTextField" name="inCategoria">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -429,7 +433,7 @@
             <Property name="text" type="java.lang.String" value="ID carril"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="nombreCarril5">
+        <Component class="javax.swing.JTextField" name="inIdCarril">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -450,7 +454,7 @@
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator32">
         </Component>
-        <Component class="javax.swing.JTextField" name="nombreCarril6">
+        <Component class="javax.swing.JTextField" name="inCedula">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -489,7 +493,7 @@
             <Property name="text" type="java.lang.String" value="fecha"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="nombreCarril7">
+        <Component class="javax.swing.JTextField" name="inFecha">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -519,7 +523,7 @@
             <Property name="text" type="java.lang.String" value="Hora"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="nombreCarril8">
+        <Component class="javax.swing.JTextField" name="inHora">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -549,7 +553,7 @@
             <Property name="text" type="java.lang.String" value="Pago"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="nombreCarril9">
+        <Component class="javax.swing.JTextField" name="inPago">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -565,6 +569,10 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inPagoActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inPagoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator35">
         </Component>
@@ -579,7 +587,7 @@
             <Property name="text" type="java.lang.String" value="Cambio"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="nombreCarril10">
+        <Component class="javax.swing.JTextField" name="inCambio">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

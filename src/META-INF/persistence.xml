@@ -15,4 +15,16 @@
       <property name="javax.persistence.jdbc.password" value="123"/>
     </properties>
   </persistence-unit>
+  <persistence-unit name="Peaje1.0PU2" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>transito.modelo.Propietario</class>
+    <class>transito.modelo.Vehiculo</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.0.28:5432/transito"/>
+      <property name="javax.persistence.jdbc.user" value="peajeUnivalle"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="123456"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
 </persistence>
