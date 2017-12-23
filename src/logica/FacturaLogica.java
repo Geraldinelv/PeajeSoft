@@ -1,6 +1,7 @@
 
 package logica;
 
+import java.util.List;
 import modelo.Factura;
 import modelo.Informe;
 import persistencia.FacturaJpaController;
@@ -14,6 +15,9 @@ public class FacturaLogica {
     return FacturaDAO.findFactura(factura.getIdfactura());
    }
    
+   public List<Factura> consultarTodos() throws Exception{
+        return FacturaDAO.findFacturaEntities();
+    }
    public void registarFactura(Factura factura) throws Exception{
        FacturaDAO.create(factura);
    }

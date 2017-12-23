@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import modelo.Carril;
 import modelo.Informe;
 import persistencia.exceptions.IllegalOrphanException;
@@ -28,14 +29,12 @@ import persistencia.exceptions.PreexistingEntityException;
  */
 public class CarrilJpaController implements Serializable {
 
-    public CarrilJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
+    public CarrilJpaController() {
+       this.emf =  Persistence.createEntityManagerFactory("Peaje1.0PU");
     }
     private EntityManagerFactory emf = null;
 
-    public CarrilJpaController() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();

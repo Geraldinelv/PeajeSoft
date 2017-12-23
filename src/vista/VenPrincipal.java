@@ -5,7 +5,47 @@
  */
 package vista;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+=======
+import java.awt.Color;
+>>>>>>> a1a640f70cf05e1979ab0bb2c009d82abdd79851
+=======
+import java.awt.Color;
+>>>>>>> a1a640f70cf05e1979ab0bb2c009d82abdd79851
 import javax.swing.JOptionPane;
+import logica.CarrilLogica;
+import logica.CategoriaLogica;
+import logica.EmpleadoLogica;
+import logica.FacturaLogica;
+import modelo.Carril;
+import modelo.Categoria;
+import modelo.Empleado;
+import modelo.Factura;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.view.JasperViewer;
+import static vista.Loggin.cedulaEmpleado;
 
 /**
  *
@@ -16,8 +56,11 @@ public class VenPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VenPrincipal
      */
+    int modNoc = -1;
+
     public VenPrincipal() {
         initComponents();
+        inPlaca.requestFocus();
     }
 
     /**
@@ -32,38 +75,39 @@ public class VenPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        modoNocturnoBtn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        rSButtonMetro1 = new rsbuttom.RSButtonMetro();
+        botonsito = new rsbuttom.RSButtonMetro();
         jLabel47 = new javax.swing.JLabel();
-        nombreCarril2 = new javax.swing.JTextField();
+        inIdFactura = new javax.swing.JTextField();
         jSeparator28 = new javax.swing.JSeparator();
         nombreCarrilBusqueda4 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
-        nombreCarril3 = new javax.swing.JTextField();
+        inPlaca = new javax.swing.JTextField();
         jSeparator29 = new javax.swing.JSeparator();
         jLabel49 = new javax.swing.JLabel();
-        nombreCarril4 = new javax.swing.JTextField();
+        inCategoria = new javax.swing.JTextField();
         jSeparator30 = new javax.swing.JSeparator();
         jLabel50 = new javax.swing.JLabel();
-        nombreCarril5 = new javax.swing.JTextField();
+        inIdCarril = new javax.swing.JTextField();
         jSeparator31 = new javax.swing.JSeparator();
         jSeparator32 = new javax.swing.JSeparator();
-        nombreCarril6 = new javax.swing.JTextField();
+        inCedula = new javax.swing.JTextField();
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
-        nombreCarril7 = new javax.swing.JTextField();
+        inFecha = new javax.swing.JTextField();
         jSeparator33 = new javax.swing.JSeparator();
         jLabel53 = new javax.swing.JLabel();
-        nombreCarril8 = new javax.swing.JTextField();
+        inHora = new javax.swing.JTextField();
         jSeparator34 = new javax.swing.JSeparator();
         jLabel54 = new javax.swing.JLabel();
-        nombreCarril9 = new javax.swing.JTextField();
+        inPrecioPagar = new javax.swing.JTextField();
         jSeparator35 = new javax.swing.JSeparator();
         jLabel55 = new javax.swing.JLabel();
-        nombreCarril10 = new javax.swing.JTextField();
+        inPagoCliente = new javax.swing.JTextField();
         jSeparator36 = new javax.swing.JSeparator();
-        rSButtonMetro2 = new rsbuttom.RSButtonMetro();
-        rSButtonMetro3 = new rsbuttom.RSButtonMetro();
+        btnFacturar = new rsbuttom.RSButtonMetro();
+        btnReporte = new rsbuttom.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,12 +125,26 @@ public class VenPrincipal extends javax.swing.JFrame {
             }
         });
 
+        modoNocturnoBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        modoNocturnoBtn.setForeground(new java.awt.Color(52, 152, 219));
+        modoNocturnoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-idea-30.png"))); // NOI18N
+        modoNocturnoBtn.setText("Modo nocturno");
+        modoNocturnoBtn.setBorderPainted(false);
+        modoNocturnoBtn.setContentAreaFilled(false);
+        modoNocturnoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modoNocturnoBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(modoNocturnoBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -96,26 +154,27 @@ public class VenPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton1)
                 .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(modoNocturnoBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(73, 171, 213));
 
-        rSButtonMetro1.setText("Facturar");
-        rSButtonMetro1.setColorHover(new java.awt.Color(73, 171, 213));
-        rSButtonMetro1.setColorNormal(new java.awt.Color(63, 192, 220));
-        rSButtonMetro1.setColorPressed(new java.awt.Color(73, 171, 213));
+        botonsito.setText("Facturar");
+        botonsito.setColorHover(new java.awt.Color(73, 171, 213));
+        botonsito.setColorNormal(new java.awt.Color(63, 192, 220));
+        botonsito.setColorPressed(new java.awt.Color(73, 171, 213));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rSButtonMetro1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+            .addComponent(botonsito, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(rSButtonMetro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonsito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -123,10 +182,14 @@ public class VenPrincipal extends javax.swing.JFrame {
         jLabel47.setForeground(new java.awt.Color(73, 171, 213));
         jLabel47.setText("ID factura");
 
-        nombreCarril2.setEditable(false);
-        nombreCarril2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril2.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril2.setBorder(null);
+        inIdFactura.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inIdFactura.setForeground(new java.awt.Color(73, 171, 213));
+        inIdFactura.setBorder(null);
+        inIdFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inIdFacturaActionPerformed(evt);
+            }
+        });
 
         nombreCarrilBusqueda4.setBackground(new java.awt.Color(245, 245, 245));
         nombreCarrilBusqueda4.setFont(new java.awt.Font("ClementePDai", 0, 24)); // NOI18N
@@ -138,94 +201,112 @@ public class VenPrincipal extends javax.swing.JFrame {
         jLabel48.setForeground(new java.awt.Color(73, 171, 213));
         jLabel48.setText("Placa");
 
-        nombreCarril3.setEditable(false);
-        nombreCarril3.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril3.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril3.setBorder(null);
+        inPlaca.setBackground(new java.awt.Color(255, 255, 255));
+        inPlaca.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inPlaca.setForeground(new java.awt.Color(73, 171, 213));
+        inPlaca.setBorder(null);
+        inPlaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inPlacaActionPerformed(evt);
+            }
+        });
+        inPlaca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inPlacaKeyTyped(evt);
+            }
+        });
 
         jLabel49.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(73, 171, 213));
         jLabel49.setText("Categoria");
 
-        nombreCarril4.setEditable(false);
-        nombreCarril4.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril4.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril4.setBorder(null);
+        inCategoria.setEditable(false);
+        inCategoria.setBackground(new java.awt.Color(255, 255, 255));
+        inCategoria.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inCategoria.setForeground(new java.awt.Color(73, 171, 213));
+        inCategoria.setBorder(null);
 
         jLabel50.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(73, 171, 213));
         jLabel50.setText("ID carril");
 
-        nombreCarril5.setEditable(false);
-        nombreCarril5.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril5.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril5.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril5.setBorder(null);
+        inIdCarril.setEditable(false);
+        inIdCarril.setBackground(new java.awt.Color(255, 255, 255));
+        inIdCarril.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inIdCarril.setForeground(new java.awt.Color(73, 171, 213));
+        inIdCarril.setBorder(null);
 
-        nombreCarril6.setEditable(false);
-        nombreCarril6.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril6.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril6.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril6.setBorder(null);
+        inCedula.setEditable(false);
+        inCedula.setBackground(new java.awt.Color(255, 255, 255));
+        inCedula.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inCedula.setForeground(new java.awt.Color(73, 171, 213));
+        inCedula.setBorder(null);
 
         jLabel51.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(73, 171, 213));
-        jLabel51.setText("cedula propietario");
+        jLabel51.setText("Cedula propietario");
 
         jLabel52.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(73, 171, 213));
         jLabel52.setText("fecha");
 
-        nombreCarril7.setEditable(false);
-        nombreCarril7.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril7.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril7.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril7.setBorder(null);
+        inFecha.setEditable(false);
+        inFecha.setBackground(new java.awt.Color(255, 255, 255));
+        inFecha.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inFecha.setForeground(new java.awt.Color(73, 171, 213));
+        inFecha.setBorder(null);
 
         jLabel53.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel53.setForeground(new java.awt.Color(73, 171, 213));
         jLabel53.setText("Hora");
 
-        nombreCarril8.setEditable(false);
-        nombreCarril8.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril8.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril8.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril8.setBorder(null);
+        inHora.setEditable(false);
+        inHora.setBackground(new java.awt.Color(255, 255, 255));
+        inHora.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inHora.setForeground(new java.awt.Color(73, 171, 213));
+        inHora.setBorder(null);
 
         jLabel54.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(73, 171, 213));
-        jLabel54.setText("Pago");
+        jLabel54.setText("Precio a pagar");
 
-        nombreCarril9.setEditable(false);
-        nombreCarril9.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril9.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril9.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril9.setBorder(null);
+        inPrecioPagar.setEditable(false);
+        inPrecioPagar.setBackground(new java.awt.Color(255, 255, 255));
+        inPrecioPagar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inPrecioPagar.setForeground(new java.awt.Color(73, 171, 213));
+        inPrecioPagar.setBorder(null);
 
         jLabel55.setFont(new java.awt.Font("ClementePDai", 0, 18)); // NOI18N
         jLabel55.setForeground(new java.awt.Color(73, 171, 213));
-        jLabel55.setText("Cambio");
+        jLabel55.setText("Pago");
 
-        nombreCarril10.setEditable(false);
-        nombreCarril10.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCarril10.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        nombreCarril10.setForeground(new java.awt.Color(73, 171, 213));
-        nombreCarril10.setBorder(null);
+        inPagoCliente.setBackground(new java.awt.Color(255, 255, 255));
+        inPagoCliente.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        inPagoCliente.setForeground(new java.awt.Color(73, 171, 213));
+        inPagoCliente.setBorder(null);
+        inPagoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inPagoClienteKeyTyped(evt);
+            }
+        });
 
-        rSButtonMetro2.setText("Facturar");
-        rSButtonMetro2.setColorHover(new java.awt.Color(73, 171, 213));
-        rSButtonMetro2.setColorNormal(new java.awt.Color(63, 192, 220));
-        rSButtonMetro2.setColorPressed(new java.awt.Color(73, 171, 213));
-
-        rSButtonMetro3.setText("Reportar");
-        rSButtonMetro3.setColorHover(new java.awt.Color(221, 75, 57));
-        rSButtonMetro3.setColorNormal(new java.awt.Color(221, 75, 80));
-        rSButtonMetro3.setColorPressed(new java.awt.Color(221, 75, 57));
-        rSButtonMetro3.addActionListener(new java.awt.event.ActionListener() {
+        btnFacturar.setText("Facturar");
+        btnFacturar.setColorHover(new java.awt.Color(73, 171, 213));
+        btnFacturar.setColorNormal(new java.awt.Color(63, 192, 220));
+        btnFacturar.setColorPressed(new java.awt.Color(73, 171, 213));
+        btnFacturar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonMetro3ActionPerformed(evt);
+                btnFacturarActionPerformed(evt);
+            }
+        });
+
+        btnReporte.setText("Reportar");
+        btnReporte.setColorHover(new java.awt.Color(221, 75, 57));
+        btnReporte.setColorNormal(new java.awt.Color(221, 75, 80));
+        btnReporte.setColorPressed(new java.awt.Color(221, 75, 57));
+        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteActionPerformed(evt);
             }
         });
 
@@ -248,54 +329,54 @@ public class VenPrincipal extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel50)
-                                            .addComponent(nombreCarril5)
+                                            .addComponent(inIdCarril)
                                             .addComponent(jSeparator31, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel51)
-                                            .addComponent(nombreCarril6)
+                                            .addComponent(inCedula)
                                             .addComponent(jSeparator32, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel52)
-                                            .addComponent(nombreCarril7)
+                                            .addComponent(inFecha)
                                             .addComponent(jSeparator33, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel47)
-                                            .addComponent(nombreCarril2, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                                            .addComponent(inIdFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                                             .addComponent(jSeparator28))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel48)
-                                            .addComponent(nombreCarril3)
+                                            .addComponent(inPlaca)
                                             .addComponent(jSeparator29, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel49)
-                                            .addComponent(nombreCarril4)
+                                            .addComponent(inCategoria)
                                             .addComponent(jSeparator30, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel53)
-                                            .addComponent(nombreCarril8)
+                                            .addComponent(inHora)
                                             .addComponent(jSeparator34, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel54)
-                                            .addComponent(nombreCarril9)
+                                            .addComponent(inPrecioPagar)
                                             .addComponent(jSeparator35, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel55)
-                                            .addComponent(nombreCarril10)
+                                            .addComponent(inPagoCliente)
                                             .addComponent(jSeparator36, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(0, 23, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(93, 93, 93)
-                        .addComponent(rSButtonMetro2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnFacturar, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(rSButtonMetro3, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -310,7 +391,7 @@ public class VenPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel49)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator30, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -320,13 +401,13 @@ public class VenPrincipal extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel47)
                                         .addGap(2, 2, 2)
-                                        .addComponent(nombreCarril2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(inIdFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jSeparator28, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel48)
                                         .addGap(2, 2, 2)
-                                        .addComponent(nombreCarril3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(inPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jSeparator29, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(68, 68, 68)
@@ -334,19 +415,19 @@ public class VenPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel52)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator33, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel50)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inIdCarril, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator31, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel51)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator32, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(77, 77, 77)
@@ -354,25 +435,25 @@ public class VenPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel55)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inPagoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator36, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel53)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator34, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel54)
                                 .addGap(2, 2, 2)
-                                .addComponent(nombreCarril9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inPrecioPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator35, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rSButtonMetro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rSButtonMetro3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnFacturar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(37, 37, 37))))
         );
 
@@ -392,15 +473,15 @@ public class VenPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rSButtonMetro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro3ActionPerformed
-        // TODO add your handling code here
+    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+        inPlaca.requestFocus();
         int pregunta = JOptionPane.showConfirmDialog(null, "¿Realmente desea reportar este vehiculo?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (pregunta == 0) {
             JOptionPane.showMessageDialog(this, "REportar");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No REportar");
         }
-    }//GEN-LAST:event_rSButtonMetro3ActionPerformed
+    }//GEN-LAST:event_btnReporteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -408,6 +489,244 @@ public class VenPrincipal extends javax.swing.JFrame {
         l.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+    private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
+        try {                                            
+            String a = inIdFactura.getText();
+            String placa = "", tipovehiculo = "";
+            inPagoCliente.getText();
+            if(inPrecioPagar.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Compruebe si ha realizado la busqueda de la placa.");
+            }
+            if(inPagoCliente.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Ingrese el dinero entregado por el cliente.");
+                inPagoCliente.requestFocus();
+                return;
+            }else if(Integer.parseInt(inPagoCliente.getText())< Integer.parseInt(inPrecioPagar.getText())){
+                JOptionPane.showMessageDialog(this, "El dinero entregado por el cliente es menor, intentelo de nuevo.");
+                inPagoCliente.requestFocus();
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "El cambio a dar es " + (Integer.parseInt(inPrecioPagar.getText())-Integer.parseInt(inPagoCliente.getText())) + ".");
+            Date d = new Date();
+            System.out.println(d);
+            Factura f = new Factura(Integer.parseInt(inIdFactura.getText()), d, d, Double.parseDouble(inPagoCliente.getText()),( Double.parseDouble(inPrecioPagar.getText())-Double.parseDouble(inPagoCliente.getText())));
+            f.setCategoria(new CategoriaLogica().buscarCategoria(new Categoria(inCategoria.getText())));
+            f.setIdcarril(new CarrilLogica().buscarCarril(new Carril(Integer.parseInt(inIdCarril.getText()))));
+            System.out.println(cedulaEmpleado);
+            f.setCedula(new EmpleadoLogica().buscarEmpleado(new Empleado(cedulaEmpleado)));
+            f.setPlaca(inPlaca.getText());
+            
+            System.out.println(f.getIdfactura());
+            try {
+                new FacturaLogica().registarFactura(f);
+            } catch (Exception ex) {
+                Logger.getLogger(VenPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            Class.forName("org.postgresql.Driver");
+            java.sql.Connection conexion = DriverManager.getConnection("jdbc:postgresql://192.168.0.19:5432/Peaje", "postgres", "123");
+            
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("idFac", f.getIdfactura());
+JasperCompileManager.compileReportToFile(
+                "Factura.jrxml",//the path to the jrxml file to compile
+                "Factura.jasper");
+            JasperPrint jp = JasperFillManager.fillReport("C:\\Users\\Usuario\\Desktop\\UUUUUU\\AAAAAA\\PeajeSoft\\src\\reporte\\Factura.jasper", parametros, conexion);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+
+            JRExporter exporter = new JRPdfExporter();
+            //   String a = "Factura" + Integer.parseInt(modelo.getValueAt(tablaFactura.getSelectedRow(), 0).toString()) + ".pdf";
+            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jp);
+            exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File(a));
+            
+            
+            
+            
+            
+            
+            
+            inPlaca.setText("");
+            inPlaca.requestFocus();
+            inCategoria.setText("");
+            inCedula.setText("");
+            inPrecioPagar.setText("");
+            int t =Integer.parseInt( inIdFactura.getText())+1;
+            inIdFactura.setText(String.valueOf(t));
+            inFecha.setText("");
+            inHora.setText("");
+            
+            //Factura f = new FacturaLogica().registarFactura(new Factura(0, d, t, ERROR, HEIGHT))
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(VenPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(VenPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(VenPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnFacturarActionPerformed
+
+    private void inIdFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inIdFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inIdFacturaActionPerformed
+
+    private void inPlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inPlacaKeyTyped
+
+        int key = evt.getKeyChar();
+        System.out.println(key);
+        if (key==KeyEvent.VK_ENTER ) {
+            inPagoCliente.requestFocus();
+            evt.consume();
+            String a = inPlaca.getText().toUpperCase();
+            String placa = "", tipovehiculo = "", cedula = "";
+            Date d = new Date();
+            System.out.println(d.toString());
+            Time t = new Time(0);
+            System.out.println(t.toString()); 
+            DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                Class.forName("org.postgresql.Driver");
+                Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.0.28:5432/transito", "peajeUnivalle", "123456");
+                PreparedStatement pst = con.prepareStatement("SELECT * FROM vehiculo Where placa=" + "'" + a + "';");
+                ResultSet rs = pst.executeQuery();
+                ResultSetMetaData rsm = rs.getMetaData();
+                while (rs.next()) {
+                    System.out.println(rs.getString(1));
+                    placa = rs.getString(1);
+                    cedula = rs.getString(2);
+                    tipovehiculo = rs.getString(3);
+                }
+                
+                if(tipovehiculo.equals("HUMANITARIO")){
+                    JOptionPane.showMessageDialog(this, "Carro de ayuda Humanitaria. Se dara paso automanticamente.");
+                    inPlaca.setText("");
+                    inPlaca.requestFocus();
+                    return;
+                }
+                try {
+                    inIdFactura.setText(String.valueOf(new FacturaLogica().consultarTodos().size()+1));
+                } catch (Exception ex) {
+                    Logger.getLogger(VenPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                inCategoria.setText(tipovehiculo);
+                inIdCarril.setText("1");
+                inCedula.setText(cedula);
+                inFecha.setText(dateFormat.format(d));
+                inHora.setText(hourFormat.format(d));
+                Categoria ca = new CategoriaLogica().buscarCategoria(new Categoria(tipovehiculo));
+                int h=(int) ca.getPrecio();
+                inPrecioPagar.setText(String.valueOf(h));
+                inPagoCliente.getText();
+
+                System.out.println(tipovehiculo);
+                if (placa.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "LLAME AL PERSONAL DE SEGURIDAD, PLACA NO ENCONTRADA.");
+                    return;
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(VenPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(VenPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_inPlacaKeyTyped
+
+    private void inPagoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inPagoClienteKeyTyped
+        char c = evt.getKeyChar();
+        int i = evt.getKeyChar();
+        if (i==KeyEvent.VK_ENTER) {
+            evt.consume();
+            btnFacturarActionPerformed(null);
+        } 
+        if (i==KeyEvent.VK_HOME) {
+            evt.consume();
+            btnReporteActionPerformed(null);
+        } 
+        if (inPagoCliente.getText().length() >= 7) {
+            evt.consume();
+        }
+               // TODO add your handling code here:
+    }//GEN-LAST:event_inPagoClienteKeyTyped
+
+    private void inPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inPlacaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inPlacaActionPerformed
+=======
+=======
+>>>>>>> a1a640f70cf05e1979ab0bb2c009d82abdd79851
+    private void modoNocturnoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoNocturnoBtnActionPerformed
+        // TODO add your handling code here:
+        modNoc = modNoc * -1;
+        Color negroMelo = new Color(51, 51, 51);
+        Color grisMasClaro = new Color(122, 122, 122);
+        Color grisClarito = new Color(245, 245, 245);
+        Color grisClaro = new Color(102, 102, 102);
+        Color azulMelo = new Color(73, 171, 213);//azul principal
+        Color azulMelo2 = new Color(63, 192, 220);
+        if (modNoc == 1) {
+            //modo dia
+            jPanel4.setBackground(azulMelo);
+            jPanel1.setBackground(Color.white);
+            botonsito.setColorHover(azulMelo2);
+            botonsito.setColorNormal(azulMelo);
+            botonsito.setColorPressed(azulMelo);
+            jPanel1.setBackground(grisClarito);
+            nombreCarril2.setBackground(Color.white);
+                    nombreCarril3.setBackground(Color.white);
+            nombreCarril4.setBackground(Color.white);
+                    nombreCarril5.setBackground(Color.white);
+            nombreCarril6.setBackground(Color.white);
+                    nombreCarril7.setBackground(Color.white);
+            nombreCarril8.setBackground(Color.white);
+                    nombreCarril9.setBackground(Color.white);
+            nombreCarril10.setBackground(Color.white);
+            nombreCarril2.setForeground(Color.white);
+                    nombreCarril3.setForeground(azulMelo);
+            nombreCarril4.setForeground(azulMelo);
+                    nombreCarril5.setForeground(azulMelo);
+            nombreCarril6.setForeground(azulMelo);
+                    nombreCarril7.setForeground(azulMelo);
+            nombreCarril8.setForeground(azulMelo);
+                    nombreCarril9.setForeground(azulMelo);
+            nombreCarril10.setForeground(azulMelo);
+        } else {
+            //modo noche
+            jPanel4.setBackground(negroMelo);
+            botonsito.setColorHover(grisMasClaro);
+            botonsito.setColorNormal(negroMelo);
+            botonsito.setColorPressed(negroMelo);
+            jPanel1.setBackground(grisMasClaro);
+            jPanel1.setBackground(grisClaro);
+            nombreCarril2.setBackground(grisClaro);
+                    nombreCarril3.setBackground(grisClaro);
+            nombreCarril4.setBackground(grisClaro);
+                    nombreCarril5.setBackground(grisClaro);
+            nombreCarril6.setBackground(grisClaro);
+                    nombreCarril7.setBackground(grisClaro);
+            nombreCarril8.setBackground(grisClaro);
+                    nombreCarril9.setBackground(grisClaro);
+            nombreCarril10.setBackground(grisClaro);
+            nombreCarril2.setForeground(grisClaro);
+                    nombreCarril3.setForeground(Color.white);
+            nombreCarril4.setForeground(Color.white);
+                    nombreCarril5.setForeground(Color.white);
+            nombreCarril6.setForeground(Color.white);
+                    nombreCarril7.setForeground(Color.white);
+            nombreCarril8.setForeground(Color.white);
+                    nombreCarril9.setForeground(Color.white);
+            nombreCarril10.setForeground(Color.white);
+        }
+    }//GEN-LAST:event_modoNocturnoBtnActionPerformed
+<<<<<<< HEAD
+>>>>>>> a1a640f70cf05e1979ab0bb2c009d82abdd79851
+=======
+>>>>>>> a1a640f70cf05e1979ab0bb2c009d82abdd79851
 
     /**
      * @param args the command line arguments
@@ -440,11 +759,32 @@ public class VenPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VenPrincipal().setVisible(true);
+                
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
+<<<<<<< HEAD
+    private rsbuttom.RSButtonMetro btnFacturar;
+    private rsbuttom.RSButtonMetro btnReporte;
+    private javax.swing.JTextField inCategoria;
+    private javax.swing.JTextField inCedula;
+    private javax.swing.JTextField inFecha;
+    private javax.swing.JTextField inHora;
+    private javax.swing.JTextField inIdCarril;
+    private javax.swing.JTextField inIdFactura;
+    private javax.swing.JTextField inPagoCliente;
+    private javax.swing.JTextField inPlaca;
+    private javax.swing.JTextField inPrecioPagar;
+=======
+    private rsbuttom.RSButtonMetro botonsito;
+>>>>>>> a1a640f70cf05e1979ab0bb2c009d82abdd79851
+=======
+    private rsbuttom.RSButtonMetro botonsito;
+>>>>>>> a1a640f70cf05e1979ab0bb2c009d82abdd79851
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
@@ -467,6 +807,14 @@ public class VenPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator34;
     private javax.swing.JSeparator jSeparator35;
     private javax.swing.JSeparator jSeparator36;
+<<<<<<< HEAD
+<<<<<<< HEAD
+    private javax.swing.JLabel nombreCarrilBusqueda4;
+    private rsbuttom.RSButtonMetro rSButtonMetro1;
+=======
+=======
+>>>>>>> a1a640f70cf05e1979ab0bb2c009d82abdd79851
+    private javax.swing.JButton modoNocturnoBtn;
     private javax.swing.JTextField nombreCarril10;
     private javax.swing.JTextField nombreCarril2;
     private javax.swing.JTextField nombreCarril3;
@@ -477,8 +825,8 @@ public class VenPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField nombreCarril8;
     private javax.swing.JTextField nombreCarril9;
     private javax.swing.JLabel nombreCarrilBusqueda4;
-    private rsbuttom.RSButtonMetro rSButtonMetro1;
     private rsbuttom.RSButtonMetro rSButtonMetro2;
     private rsbuttom.RSButtonMetro rSButtonMetro3;
+>>>>>>> a1a640f70cf05e1979ab0bb2c009d82abdd79851
     // End of variables declaration//GEN-END:variables
 }

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="210" pageHeight="297" columnWidth="170" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fcd6e479-b482-4ee6-9ef7-1254167f5ccc">
+	<property name="ireport.zoom" value="1.7715610000000066"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="hospeda" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Usuario\\Desktop\\Univalle 2017\\Desarrollo\\Proyecto Final\\Arcadia\\src\\reporte\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="total" class="java.lang.Integer"/>
+	<parameter name="fechaFin" class="java.util.Date"/>
+	<parameter name="idfac" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     factura."idfactura" AS factura_idfactura,
+     factura."categoria" AS factura_categoria,
+     factura."idcarril" AS factura_idcarril,
+     factura."cedula" AS factura_cedula,
+     factura."fecha" AS factura_fecha,
+     factura."hora" AS factura_hora,
+     factura."pago" AS factura_pago,
+     factura."devuelta" AS factura_devuelta,
+     factura."placa" AS factura_placa,
+     estacion."nombre" AS estacion_nombre,
+     estacion."ciudad" AS estacion_ciudad,
+     categoria."categoria" AS categoria_categoria,
+     categoria."precio" AS categoria_precio,
+     empleado."cedula" AS empleado_cedula,
+     empleado."correo" AS empleado_correo,
+     empleado."nombre" AS empleado_nombre,
+     empleado."apellidos" AS empleado_apellidos,
+     empleado."cargo" AS empleado_cargo,
+     empleado."contrasenia" AS empleado_contrasenia,
+     empleado."direccion" AS empleado_direccion,
+     empleado."estado" AS empleado_estado,
+     empleado."telefono" AS empleado_telefono,
+     carril."idcarril" AS carril_idcarril,
+     carril."nombre" AS carril_nombre,
+     carril."sentido" AS carril_sentido,
+     carril."estado" AS carril_estado
+FROM
+     "public"."categoria" categoria INNER JOIN "public"."factura" factura ON categoria."categoria" = factura."categoria"
+     INNER JOIN "public"."empleado" empleado ON factura."cedula" = empleado."cedula"
+     INNER JOIN "public"."carril" carril ON factura."idcarril" = carril."idcarril"
+     INNER JOIN "public"."estacion" estacion ON carril."nombre" = estacion."nombre"
+
+where factura."idfactura"= $P{idfac}]]>
+	</queryString>
+	<field name="factura_idfactura" class="java.lang.Integer"/>
+	<field name="factura_categoria" class="java.lang.String"/>
+	<field name="factura_idcarril" class="java.lang.Integer"/>
+	<field name="factura_cedula" class="java.lang.String"/>
+	<field name="factura_fecha" class="java.sql.Date"/>
+	<field name="factura_hora" class="java.sql.Time"/>
+	<field name="factura_pago" class="java.lang.Double"/>
+	<field name="factura_devuelta" class="java.lang.Double"/>
+	<field name="factura_placa" class="java.lang.String"/>
+	<field name="estacion_nombre" class="java.lang.String"/>
+	<field name="estacion_ciudad" class="java.lang.String"/>
+	<field name="categoria_categoria" class="java.lang.String"/>
+	<field name="categoria_precio" class="java.lang.Double"/>
+	<field name="empleado_cedula" class="java.lang.String"/>
+	<field name="empleado_correo" class="java.lang.String"/>
+	<field name="empleado_nombre" class="java.lang.String"/>
+	<field name="empleado_apellidos" class="java.lang.String"/>
+	<field name="empleado_cargo" class="java.lang.String"/>
+	<field name="empleado_contrasenia" class="java.lang.String"/>
+	<field name="empleado_direccion" class="java.lang.String"/>
+	<field name="empleado_estado" class="java.lang.Boolean"/>
+	<field name="empleado_telefono" class="java.lang.String"/>
+	<field name="carril_idcarril" class="java.lang.Integer"/>
+	<field name="carril_nombre" class="java.lang.String"/>
+	<field name="carril_sentido" class="java.lang.String"/>
+	<field name="carril_estado" class="java.lang.Boolean"/>
+	<variable name="hospeda" class="java.lang.Integer"/>
+	<variable name="subComodidadtotals" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="217" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="2" width="108" height="27" uuid="11dfea50-e427-4e4e-b09e-39c28aea4074"/>
+				<imageExpression><![CDATA["C:\\Users\\Usuario\\Desktop\\UUUUUU\\AAAAAA\\PeajeSoft\\src\\imagenes\\logonegro.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="86" y="121" width="84" height="16" uuid="37d1fd14-668a-4e3a-8ac5-5d46f4b9af05"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{factura_hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="70" width="100" height="11" uuid="200dfaf6-4e2d-4a6e-8358-82cd6e0578a9"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{carril_sentido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="40" width="100" height="15" uuid="3bd2a7b9-0489-4d68-8fc8-f498ac3c3c3b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estacion_ciudad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="151" width="86" height="15" uuid="4c14f3c9-f512-4763-ac51-7455c612a998"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Placa		:]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="55" width="62" height="15" uuid="fd5ccf2b-f69d-44e3-b23b-1c1b088fec3b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{carril_idcarril}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="89" width="84" height="16" uuid="067dbaa9-2cc0-4af6-a14a-6bd7fbaefdcb"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{factura_idfactura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="166" width="86" height="15" uuid="edd6116e-3aa3-4ff0-a48a-f136c6ed00ef"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Precio a pagar	:]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="181" width="86" height="15" uuid="212c8e94-6ed5-485a-a175-fee59545fed6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Dinero recibido	:]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="105" width="86" height="16" uuid="4d8fd049-61bd-45b7-9215-72f53d5e737c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Fecha		:]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="55" width="100" height="15" uuid="ac7eba04-fcd3-4089-b1a7-5cfdb0c68dc5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Carril Nro:]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="121" width="86" height="16" uuid="7fb45ef0-3c03-46ee-ba9e-d6a21a086b06"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Hora		:]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="166" width="84" height="15" uuid="ca198ae9-ac03-4561-acea-adb270d4dbdd"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{categoria_precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="151" width="84" height="15" uuid="d16cd010-ba2a-47d4-bb6a-9c9b45367c1a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{factura_placa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="28" width="100" height="12" uuid="a21c6ab4-e9ed-4d68-ad5c-162b6c3b18f1"/>
+				<textFieldExpression><![CDATA[$F{estacion_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="137" width="84" height="15" uuid="b15b11c9-ae37-49b9-895c-062d865e7e77"/>
+				<textElement>
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{categoria_categoria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="89" width="86" height="16" uuid="ffbad0f4-569d-4610-8584-9e41800652c6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Factura Nro	:]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="196" width="176" height="1" uuid="21453d34-6cae-4f2c-bf62-b2f0d798dad0"/>
+			</line>
+			<textField>
+				<reportElement x="86" y="105" width="84" height="16" uuid="8e7dc52d-774a-490a-b0a8-78134305eaed"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{factura_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="137" width="86" height="15" uuid="0d316bd3-f465-46a3-b084-b2ef41e7e35f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Categoria	:]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="181" width="84" height="15" uuid="1d3db87e-2047-446a-b50a-e7cc91e58029"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{factura_pago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="197" width="86" height="15" uuid="55bc2833-5ef2-4d21-a189-91dda160c2b1"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Total cambio	:]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

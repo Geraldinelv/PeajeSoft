@@ -13,8 +13,10 @@ import javax.persistence.criteria.Root;
 import modelo.Factura;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import modelo.Categoria;
 import persistencia.exceptions.IllegalOrphanException;
 import persistencia.exceptions.NonexistentEntityException;
@@ -26,14 +28,11 @@ import persistencia.exceptions.PreexistingEntityException;
  */
 public class CategoriaJpaController implements Serializable {
 
-    public CategoriaJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
+    public CategoriaJpaController() {
+        this.emf =  Persistence.createEntityManagerFactory("Peaje1.0PU");
     }
     private EntityManagerFactory emf = null;
-
-    public CategoriaJpaController() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    private EntityManager em = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();

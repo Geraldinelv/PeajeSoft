@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c3e6364c-343d-4cd3-a605-3206195732d9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select count(cuenta) as masH,(select count(*) from reservahabitacion)as reser
+from	( 
+	select idreservahabitacion, count(*) as cantidad
+	from habitacionreservada
+	group by idreservahabitacion
+	) as cuenta
+
+where cuenta.cantidad > 1]]>
+	</queryString>
+	<field name="mash" class="java.lang.Long"/>
+	<field name="reser" class="java.lang.Long"/>
+	<variable name="resta" class="java.lang.Long">
+		<variableExpression><![CDATA[$F{reser}-$F{mash}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="216" splitType="Stretch">
+			<staticText>
+				<reportElement x="286" y="196" width="117" height="20" uuid="02a30e61-ae40-4ab7-83a3-bb2064384075"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de reporte:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="426" y="196" width="129" height="20" uuid="ae7b4601-5539-4104-a8d9-b82cbc13cefb"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="56" y="41" width="475" height="99" uuid="79309a84-9f4a-420a-8fb2-683970831eba"/>
+				<imageExpression><![CDATA["C:\\Users\\Usuario\\Desktop\\UUUUUU\\AAAAAA\\PeajeSoft\\src\\imagenes\\logogrande.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<summary>
+		<band height="415" splitType="Stretch">
+			<staticText>
+				<reportElement x="140" y="179" width="273" height="58" uuid="c09b2b80-b083-4991-8439-b3abb1ece4ee"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[No se encontraron reservas ]]></text>
+			</staticText>
+			<pie3DChart>
+				<chart>
+					<reportElement x="0" y="57" width="555" height="341" uuid="46a6b85b-006f-43de-8305-a545f050ef7c"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<pieSeries>
+						<keyExpression><![CDATA["Reservas de una habitacion"]]></keyExpression>
+						<valueExpression><![CDATA[$V{resta}]]></valueExpression>
+						<labelExpression><![CDATA[$V{resta}+"("+new java.text.DecimalFormat("0.00").format(($V{resta}.doubleValue()*100)/$F{reser}.doubleValue())+"%)"]]></labelExpression>
+					</pieSeries>
+					<pieSeries>
+						<keyExpression><![CDATA["Reservas de mas de una habitacion."]]></keyExpression>
+						<valueExpression><![CDATA[$F{mash}]]></valueExpression>
+						<labelExpression><![CDATA[$F{mash}+"("+new java.text.DecimalFormat("0.00").format(($F{mash}.doubleValue()*100)/$F{reser}.doubleValue())+"%)"]]></labelExpression>
+					</pieSeries>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+			<staticText>
+				<reportElement x="0" y="16" width="555" height="41" uuid="2f7abc09-92b9-4a6b-a59a-ff8b36bdce4b"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Vehiculos]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

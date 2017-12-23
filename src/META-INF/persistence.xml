@@ -3,13 +3,13 @@
   <persistence-unit name="Peaje1.0PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>modelo.Carril</class>
-    <class>modelo.Estacion</class>
-    <class>modelo.Empleado</class>
     <class>modelo.Categoria</class>
-    <class>modelo.Informe</class>
+    <class>modelo.Empleado</class>
+    <class>modelo.Estacion</class>
     <class>modelo.Factura</class>
+    <class>modelo.Informe</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Peaje"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.0.19:5432/Peaje"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="123"/>

@@ -11,12 +11,17 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import logica.EmpleadoLogica;
+import modelo.Empleado;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
  * @author Duvan Quevedo
  */
 public class Loggin extends javax.swing.JFrame {
+
+    public static String cedulaEmpleado;
 
     /**
      * Creates new form Loggin
@@ -325,8 +330,6 @@ public class Loggin extends javax.swing.JFrame {
 //            }
 //        }
 //    }
-    
-    
 
     private void contraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contraseñaFocusGained
         // TODO add your handling code here:
@@ -343,25 +346,35 @@ public class Loggin extends javax.swing.JFrame {
     }//GEN-LAST:event_usuarioActionPerformed
 
     private void ingresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarBtnActionPerformed
-        // TODO add your handling code here:
-        if (usuario.getText().equals("admin") && contraseña.getText().equals("admin")) {
-            loader.show();
-            login.hide();
-            Loggin.setDefaultLookAndFeelDecorated(false);
 
-            new java.util.Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    Principal m = new Principal();
-                    //m.setExtendedState(MAXIMIZED_BOTH);
-                    m.show();
-                    dispose();
+        try {
+            Empleado e = new EmpleadoLogica().buscarEmpleado(new Empleado(usuario.getText()));
+
+            if (usuario.getText().equals("") || contraseña.getText().equals("")) {
+                alerta.setText("Ningun campo puede estar vacio");
+            } else if (e != null && e.getContrasenia() != (DigestUtils.md5Hex(contraseña.getText()))) {
+                alerta.setText("Contraseña incorrecta.");
+            } else {
+                alerta.setText("Contraseña incorrecta.");
+            }
+
+            if (e.getCedula().equals(usuario.getText()) && e.getContrasenia().equals(DigestUtils.md5Hex(contraseña.getText()))) {
+                if (e.getCargo().equals("ADMINISTRADOR")) {
+                    Principal p = new Principal();
+                    p.setVisible(true);
+                    this.dispose();
+                } else if (e.getCargo().equals("EMPLEADO")) {
+                    cedulaEmpleado = e.getCedula();
+                    VenPrincipal p = new VenPrincipal();
+                    p.setVisible(true);
+                    this.dispose();
                 }
-            }, 1000 * 5);
-        } else {
-            alerta.setText("Datos Incorrectos.");
-            contraseña.setText("");
-            usuario.setText("");
+            } else {
+                alerta.setText("Usuario no encontrado. Intente de nuevo.");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
     }//GEN-LAST:event_ingresarBtnActionPerformed
@@ -379,15 +392,15 @@ public class Loggin extends javax.swing.JFrame {
     private void usuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioKeyReleased
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {//evt.getKeyCode
-                ingresarBtnActionPerformed(null);
-            }
+            ingresarBtnActionPerformed(null);
+        }
     }//GEN-LAST:event_usuarioKeyReleased
 
     private void contraseñaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contraseñaKeyReleased
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {//evt.getKeyCode
-                ingresarBtnActionPerformed(null);
-            }
+            ingresarBtnActionPerformed(null);
+        }
     }//GEN-LAST:event_contraseñaKeyReleased
 
     /**

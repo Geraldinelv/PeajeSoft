@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="89995f36-91cd-4dcd-bd2e-abe7b9ce4845">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fe" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     extract(dow from factura."fecha") as dia,
+	count (extract(dow from factura."fecha")) 
+FROM
+     "public"."factura" factura
+where factura."fecha" >= $P{fe}
+ and factura."fecha" <= $P{cha}
+group by dia]]>
+	</queryString>
+	<field name="dia" class="java.lang.Double"/>
+	<field name="count" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<image>
+				<reportElement x="52" y="2" width="475" height="99" uuid="bb902bc9-a831-473a-aab7-4fb304745292"/>
+				<imageExpression><![CDATA["C:\\Users\\Usuario\\Desktop\\UUUUUU\\AAAAAA\\PeajeSoft\\src\\imagenes\\logogrande.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="84" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement mode="Opaque" x="0" y="54" width="555" height="30" backcolor="#999999" uuid="f0a1497e-d85f-41d2-b860-68f907fe3bd1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="41" uuid="32d30fb8-f388-4d13-971a-0243f66b0743"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Vehiculos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="55" width="119" height="24" uuid="a61ed97d-01e5-4f98-943a-48f8afbdfd8b"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha inicial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="28" width="555" height="26" uuid="e6fd2efa-ad43-40d1-bf4d-127e3b15f608"/>
+				<textElement textAlignment="Center">
+					<font size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rango de fechas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="309" y="54" width="117" height="23" uuid="ba7a3263-13d1-4430-b5ab-32ec58ee841e"/>
+				<textElement textAlignment="Right">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha final:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="108" y="55" width="108" height="22" uuid="6475867e-fe62-4ce2-b604-d185bd0b34d5"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="55" width="129" height="23" uuid="1abf0f34-335b-4799-bfbb-9c50b9514896"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="36" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="348" splitType="Stretch">
+			<pie3DChart>
+				<chart>
+					<reportElement x="0" y="0" width="555" height="328" uuid="e9dddfc0-1444-42fb-a506-199b5315429c"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{dia}.equals(1.0)?("Lunes"):($F{dia}.equals(2.0)?("Martes"):($F{dia}.equals(3.0)?("Miercoles"):($F{dia}.equals(4.0)?("Jueves"):($F{dia}.equals(5.0)?("Viernes"):($F{dia}.equals(6.0)?("Sabado"):("Domingo"))))))]]></keyExpression>
+					<valueExpression><![CDATA[$F{count}]]></valueExpression>
+					<labelExpression><![CDATA[$F{count}.toString()]]></labelExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>

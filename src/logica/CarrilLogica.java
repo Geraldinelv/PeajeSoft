@@ -5,6 +5,7 @@
  */
 package logica;
 
+import java.util.List;
 import modelo.Carril;
 import persistencia.CarrilJpaController;
 import persistencia.exceptions.NonexistentEntityException;
@@ -17,6 +18,9 @@ public class CarrilLogica {
 
     public Carril buscarCarril(Carril carril) {
         return CarrilDao.findCarril(carril.getIdcarril());
+    }
+    public List <Carril> consultarTodos()throws Exception {
+        return CarrilDao.findCarrilEntities();
     }
 
     public void registarCarril(Carril carril) throws Exception {
